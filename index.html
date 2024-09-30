@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário com Flatpickr e FullCalendar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="style.css".css">
+    <link rel="stylesheet" href="optionsPage.css">
+
+</head>
+<body>
+<section class="section-container-global">
+    <section class="section-bar-left">
+        <div class="logo"><p class="font-logo">Vices</p></div>
+        <div class="container-options-left-bar">
+            <div class="option-left-bar active" data-option="learn" data-target="learn-bar-right">
+                <img class="icon-otion-left-bar" src="/assets/calendar-days.png" alt="">
+                <p class="font-option-left-bar">Calendario</p>
+            </div>
+            <div class="option-left-bar" data-option="ranked" data-target="ranked-bar-right">
+                <img class="icon-otion-left-bar" src="/assets/escudo.png" alt="">
+                <p class="font-option-left-bar">Ranked</p>
+            </div>
+            <div class="option-left-bar" data-option="calendario" data-target="calendar-bar-right">
+                <img class="icon-otion-left-bar" src="/assets/e-book.png" alt="">
+                <p class="font-option-left-bar">Aprender</p>
+            </div>
+            <div class="option-left-bar" data-option="profile" data-target="profile-bar-right">
+                <img class="icon-otion-left-bar" src="/assets/habilidades.png" alt="">
+                <p class="font-option-left-bar">Perfil</p>
+            </div>
+            <div class="option-left-bar" data-option="more" data-target="more-bar-right">
+                <img class="icon-otion-left-bar" src="/assets/search-engine-optimization.png" alt="">
+                <p class="font-option-left-bar">Mais</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="section-center">    
+        <div id="learn" class="content-section-center">
+            <div class="content-mod-section-learn">
+                <div id="calendar"></div>
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Editar intervalo de datas</h3>
+                        <input type="text" id="editDatePicker" placeholder="Escolha um intervalo de datas" />
+                        <button id="updateButton">Atualizar</button>
+                        <button id="deleteButton">Excluir</button> <!-- Botão de exclusão -->
+                    </div>
+                </div>
+            </div> 
+        </div>  
+        <div id="ranked" class="content-section-center">
+            <div class="content-mod-section-ranked">
+                <div class="section-learn">
+                    <div class="div-left-section-learn">
+                        <div class="number-of-section-01"><p>Seção 3</p></div>
+                        <div class="bar-progress">
+                            <div class="body-bar-progress">
+                                <p class="result-bar-progress">0/10</p>
+                            </div>
+                        </div>
+                        <div class="continue-or-learn-content">
+                            <div class="continue-or-learn">
+                                <p class="font-continue-or-learn">ESTUDAR</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-right-section-learn">
+                        <div class="box-chat-avatar-content">
+                            <div class="box-chat-avatar"></div>
+                        </div>
+                        <div class="avatar-content">
+                            <img class="img-avatar" src="/assets/avatarSP/avatar-01.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="section-learn">
+                    <div class="div-left-section-learn">
+                        <div class="number-of-section-01"><p>Seção 1</p></div>
+                        <div class="bar-progress">
+                            <div class="body-bar-progress">
+                                <p class="result-bar-progress">0/10</p>
+                            </div>
+                        </div>
+                        <div class="continue-or-learn-content">
+                            <div class="continue-or-learn">
+                                <p class="font-continue-or-learn">ESTUDAR</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-right-section-learn">
+                        <div class="box-chat-avatar-content">
+                            <div class="box-chat-avatar"></div>
+                        </div>
+                        <div class="avatar-content">
+                            <img class="img-avatar" src="/assets/avatarSP/avatar-02 (1).png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="section-learn">
+                    <div class="div-left-section-learn">
+                        <div class="number-of-section-01"><p>Seção 1</p></div>
+                        <div class="bar-progress">
+                            <div class="body-bar-progress">
+                                <p class="result-bar-progress">0/10</p>
+                            </div>
+                        </div>
+                        <div class="continue-or-learn-content">
+                            <div class="continue-or-learn">
+                                <p class="font-continue-or-learn">ESTUDAR</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-right-section-learn">
+                        <div class="box-chat-avatar-content">
+                            <div class="box-chat-avatar"></div>
+                        </div>
+                        <div class="avatar-content">
+                            <img class="img-avatar" src="/assets/avatarSP/avatar-03.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="section-learn">
+                    <div class="div-left-section-learn">
+                        <div class="number-of-section-01"><p>Seção 4</p></div>
+                        <div class="bar-progress">
+                            <div class="body-bar-progress">
+                                <p class="result-bar-progress">0/10</p>
+                            </div>
+                        </div>
+                        <div class="continue-or-learn-content">
+                            <div class="continue-or-learn">
+                                <p class="font-continue-or-learn">ESTUDAR</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-right-section-learn">
+                        <div class="box-chat-avatar-content">
+                            <div class="box-chat-avatar"></div>
+                        </div>
+                        <div class="avatar-content">
+                            <img class="img-avatar" src="/assets/avatarSP/avatar-04.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Calendar" class="content-section-center"></div>
+        <div id="profile" class="content-section-center"></div>
+        <div id="more" class="content-section-center"></div> 
+    </section>
+
+
+    <section class="sectio-bar-right">
+        <div id="learn-bar-right" class="content-section-bar-right">
+            <div class="bar-score">
+                <div class="container-max-score">
+                    <img class="img-fire-score" src="/assets/fogo.png" alt="">
+                    <p id="maxScore">0</p>
+                </div>
+                <div class="container-last-interval">
+                    <img class="img-fire-score" src="/assets/coin.png" alt="">
+                    <p id="lastInterval">0</p> <!-- Nova sessão para exibir o último intervalo -->
+                </div>
+                <div class="container-profile-bar-score">
+                    <img class="img-fire-score" src="/assets/profile.png" alt="">
+                </div>
+            </div>
+            <div class="container-ranked-loginRegister">
+                <div class="ranked-information">
+                    <div class="firt-row-ranked-information">
+                        <p class="font-first-row">Desbloqueie ligas</p>
+                    </div>
+                    <div class="second-row-ranked-information">
+                        <img class="img-ranked-information" src="/assets/fechadura.png" alt="">
+                        <p class="font-second-row" >Complete mais dez lições para <br> começar a competir.</p>
+                    </div>    
+                </div>
+                <div class="login-register">
+                    <div class="first-row-login-register">
+                        <p class="font-first-row">Crie um perfil para salvar seu progresso!</p>
+                    </div>
+                    <div class="second-row-login-register">
+                        <div class="create-profile">
+                            <div class="font-create-profile">
+                                <p >criar um perfil</p>
+                            </div>
+                            <div class="div-blind"></div>
+                        </div>
+                        <div class="login">
+                            <div id="login" class="font-create-profile">
+                                <p>entrar</p>
+                            </div>
+                            <div id="blind-login" class="div-blind"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ranked-bar-right" class="content-section-bar-right">
+            <div class="bar-score">
+                <div class="container-max-score">
+                    <img class="img-fire-score" src="/assets/fogo.png" alt="">
+                    <p id="maxScore">0</p>
+                </div>
+                <div class="container-last-interval">
+                    <img class="img-fire-score" src="/assets/coin.png" alt="">
+                    <p id="lastInterval">0</p> <!-- Nova sessão para exibir o último intervalo -->
+                </div>
+                <div class="container-profile-bar-score">
+                    <img class="img-fire-score" src="/assets/profile.png" alt="">
+                </div>
+            </div>
+            <div class="container-ranked-loginRegister">
+                <div class="ranked-information">
+                    <div class="firt-row-ranked-information">
+                        <p class="font-first-row">Desbloqueie ligas</p>
+                    </div>
+                    <div class="second-row-ranked-information">
+                        <img class="img-ranked-information" src="/assets/fechadura.png" alt="">
+                        <p class="font-second-row" >Complete mais dez lições para <br> começar a competir.</p>
+                    </div>    
+                </div>
+                <div class="login-register">
+                    <div class="first-row-login-register">
+                        <p class="font-first-row">Crie um perfil para salvar seu progresso!</p>
+                    </div>
+                    <div class="second-row-login-register">
+                        <div class="create-profile">
+                            <div class="font-create-profile">
+                                <p >criar um perfil</p>
+                            </div>
+                            <div class="div-blind"></div>
+                        </div>
+                        <div class="login">
+                            <div id="login" class="font-create-profile">
+                                <p>entrar</p>
+                            </div>
+                            <div id="blind-login" class="div-blind"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="calendar-bar-right" class="content-section-bar-right"></div>
+        <div id="profile-bar-right" class="content-section-bar-right">
+            <button id="clearButton">Limpar Todas as Datas</button>
+            <p id="savedDates"></p>
+            <p>skdwkwkcnwkcwjkc</p>
+        </div>
+        <div id="more-bar-right" class="content-section-bar-right"></div>
+    </section>
+</section>
+
+    
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script type="module" src="script.js"></script>
+<script src="optionPage.js"></script>
+</body>
+</html>

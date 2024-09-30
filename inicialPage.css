@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    width: 100%;
+    height: 80px;
+    font-family: "Rowdies", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 50px;
+    color: rgb(73, 122, 1);
+}
+
+/*-------------------------------------------header--------------------------------*/
+
+.font-logo{
+    margin-left: 300px;
+}
+
+.font-bt-comece-agora{
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+    color: white;
+    font-size: 20px;
+}
+
+.container-bt-comece-agora{
+    width: auto;
+    height: auto;
+    margin-right: 300px;
+}
+
+.bt-comece-agora{
+    width: 200px;
+    height: 50px;
+    background-color: rgb(73, 122, 1);
+    border-radius: 15px;
+    border-bottom: 5px solid rgb(1, 102, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*-------------------------------------------main--------------------------------*/
+
+main{
+    width: 100%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* first-section */
+
+.first-section{
+    width: 100%;
+    height: 860px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid grey;
+}
+
+.left-first-section{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 300px;
+}
+
+.container-cell{
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.img-container-cell{
+    width: 600px;
+}
+
+
+.right-first-section{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+    flex-direction: column;
+    font-size: 30px;
+    gap: 10px;
+    padding-right: 300px;
+}
+
+.text-firt-section{
+    text-align: center;
+}
+
+.bt-comece-agora-first-section{
+    width: 400px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: aqua;
+    border-bottom: 5px solid rgb(1, 161, 161);
+    color: white;
+    font-size: 20px;
+}
+
+.bt-ja-tenho-conta{
+    width: 400px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: rgb(255, 47, 0);
+    border-bottom: 5px solid  rgb(183, 34, 1);
+    color: white; 
+    font-size: 20px; 
+}
+
+/* second-section */
+
+.second-section{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+
+.right-second-section{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-second-section{
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    color: green;
+    font-size: 50px;
+}
+
+.font-text-second{
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+
+.left-second-section{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+    flex-direction: column;
+    font-size: 30px;
+    gap: 10px;
+}
+
+/* third-section */
+
+.third-section{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.left-third-section{
+  
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-third-section{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+    flex-direction: column;
+    font-size: 50px;
+    gap: 10px;
+    color: green;
+}
+
+.font-third{
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
