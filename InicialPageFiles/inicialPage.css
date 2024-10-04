@@ -1,0 +1,866 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    width: 100%;
+    height: 80px;
+    font-family: "Modak", system-ui;
+    font-weight: 300;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 50px;
+    color: #ffa5be;
+}
+
+/*-------------------------------------------header--------------------------------*/
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 300px;
+    gap: 5px;
+}
+
+.font-logo{
+    margin-top: 10px;
+}
+
+.logo-topbar{
+    width: 70px;
+}
+
+.font-bt-comece-agora{
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+    color: white;
+    font-size: 20px;
+}
+
+.container-bt-comece-agora{
+    width: auto;
+    height: auto;
+    margin-right: 300px;
+}
+
+.bt-comece-agora{
+    width: 200px;
+    height: 50px;
+    background-color: #ffa5be;
+    border-radius: 15px;
+    border-bottom: 5px solid #e17996;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*-------------------------------------------main--------------------------------*/
+
+main{
+    width: 100%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* first-section */
+
+.first-section{
+    width: 100%;
+    height: 860px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid grey;
+}
+
+.left-first-section{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 300px;
+}
+
+.container-cell{
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.conteudo-cell{
+    width: 221px;
+    margin-right: 41px;
+    margin-bottom: 10px;
+    display: flex;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 600;
+    font-style: normal;
+    position: absolute;
+    height: 370px;
+    border-radius: 10px;
+    background-color: transparent;
+    z-index: 10;
+    transition: background-color 1.5s ease-in-out, box-shadow 1.5s ease-in-out; /* Suavizando a transição */
+    box-shadow: none; /* Sem brilho inicialmente */
+}
+
+/* Estilos básicos para o container do chat */
+.chat-container {
+    width: 100%;
+    height: 100%; /* Ocupa a tela inteira */
+    background-color: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Caixa de mensagens */
+  .blind-chat {
+    width: 100%;
+    height: 100%;
+    background-color: #1a2c4c;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    position: absolute;
+    transition: 2s ease-in-out;
+  }
+  
+  .chat-box {
+    width: 100%;
+    height: 100%;
+    background-color:  #2a3d5e;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  .chat-box.hidden {
+    max-height: 0; /* Altura reduzida para simular encolhimento */
+  }
+  
+  /* Estilo das mensagens */
+  .message {
+    width: 80%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  /* Estilo das mensagens recebidas */
+  .message.received {
+    background-color: #c7e3ff;
+    align-self: flex-start;
+    margin-left: 10px;
+    border-bottom-left-radius: 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo das mensagens enviadas */
+  .message.sent {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+    margin-right: 10px;
+    border-bottom-right-radius: 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  /* Estilo do botão Next */
+  .next-button-phone {
+    width: 80%;
+    height: 30px;
+    margin-left: 25px;
+    background-color: #25d366;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    flex-shrink: 0;
+  }
+
+  .next-button-phone:hover{
+   background-color: #1da851; 
+  }
+  
+    .next-button-phone:active {
+        background-color: #1da851;
+    }
+  
+
+.gif-first-section{
+    position: absolute;
+    width: 400px;
+    margin-right: 700px;
+    margin-bottom: 100px;
+}
+
+.img-container-cell{
+    width: 600px;
+    z-index: 2;
+}
+
+.google-login-btn {
+    display: flex;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: rgb(2, 173, 246);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 2px solid #455f8d;
+    border-bottom: 5px solid #455f8d ;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .google-login-btn:hover {
+    background-color: #1b2f50;
+  }
+  
+  .google-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+
+.right-first-section{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+    flex-direction: column;
+    font-size: 30px;
+    gap: 10px;
+    padding-right: 300px;
+}
+
+.text-firt-section{
+    text-align: center;
+    color: #333333;
+}
+
+.bt-comece-agora-first-section{
+    width: 400px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: #5561ad;
+    border-bottom: 5px solid #232e64;
+    color: white;
+    font-size: 20px;
+}
+
+/* Estrutura básica da nova modal */
+.modal-new {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo com transparência */
+}
+
+.modal-content-new {
+    background-color: #333c4d;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+}
+
+/* Barra de progresso */
+.progress-bar-container {
+    display: flex;  
+    width: 100%;
+    height: 18px;
+    background-color: #242c3a;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+
+
+.progress-bar {
+    width: 0;
+    height: 17px;
+    border-radius: 15px;
+    border-top: 5px solid    #f781a3;
+    background-color: #ffa5be;
+}
+
+/* Estilos do questionário */
+.quiz-step {
+    display: none;
+}
+
+.quiz-step.active {
+    display: block;
+}
+
+.container-perguntas{
+    width: 100%;
+    height: 200px;
+    display: flex;
+}
+
+.img-learn-brain{
+    width: 120px;
+}
+
+.containeiner-gif-perguntas{
+    width: 30%;
+    height: 100%;
+}
+
+.container-font-perguntas{
+    width: 70%;
+    height: 100%;
+}
+/* Estilo do contêiner do balão */
+.balloon-container {
+    position: relative;
+    background-color: transparent;
+    color: white;
+    border: 2px solid #f781a3;
+    border-bottom: 7px solid #f781a3;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo do bico do balão (lado esquerdo) */
+.balloon-container::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: -19px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent  #ffa5be transparent transparent;
+}
+
+.container-alternativas{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-btn{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.font-perguntas{
+    font-size: 15px;
+}
+
+/* Estilizando o botão */
+button {
+    width: 200px;
+    height: 50px;
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    font-weight: 900;
+    background-color: #ffa5be;
+    border-bottom: 5px solid #f3658d;
+    border-radius: 15px;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    cursor: pointer;
+    margin-bottom: 100px;
+    margin-right: 100px;
+}
+
+button:hover {
+    background-color: #f781a3;
+}
+
+/* Estilizando as opções de resposta */
+form label {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 3px solid #f781a3;  /* Borda padrão */
+    border-bottom: 5px solid #f781a3;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    padding-left: 40px;  /* Espaço para o checkbox estilizado */
+    transition: border-color 0.3s, background-color 0.3s; /* Transição suave */
+}
+
+/* Remover a bolinha do input radio padrão */
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;  /* Esconde o input padrão */
+}
+
+/* Estilizando a borda do label ao passar o mouse */
+form label:hover {
+    background-color: #f781a3;  /* Fundo ao passar o mouse */
+}
+
+/* Ativar a borda e o fundo quando o radio estiver ativo */
+label.active {
+    border-color: #f781a3; /* Cor da borda ativa */
+    background-color: #f781a3;/* Fundo leve */
+}
+
+
+/* Botão de fechar */
+.close-btn-new {
+    color:  #ffa5be;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 35px;
+    cursor: pointer;
+}
+
+.close-btn-new:hover,
+.close-btn-new:focus {
+    color: #f781a3;
+    text-decoration: none;
+}
+
+
+
+
+.bt-ja-tenho-conta{
+    width: 400px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: #8bd4dd;
+    border-bottom: 5px solid #57c6d1;
+    color: white; 
+    font-size: 20px; 
+}
+
+/* Estilo para a modal inicialmente escondida */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+
+/* Conteúdo da modal */
+.modal-content {
+    background-color: #333c4d ;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+/* Botão de fechar */
+.close-btn {
+    color: #455f8d;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.container-closeModal{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.criar-conta{
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(2, 173, 246);
+    height: 50px;
+    border-radius: 15px;
+    border: 2px solid #455f8d ;
+    border-bottom: 5px solid #455f8d;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 1000;
+    font-style: normal;
+    margin-right: 50px;
+}
+
+
+
+/*-----------form style------------------*/
+.loginbackground {
+    min-height: 692px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+.flex-flex {
+    display: flex;
+}
+.align-center {
+  align-items: center; 
+}
+.center-center {
+  align-items: center;
+  justify-content: center;
+}
+.box-root {
+    box-sizing: border-box;
+    background-color: #333c4d;
+}
+.flex-direction--column {
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.box-divider--light-all-2 {
+    box-shadow: inset 0 0 0 2px #e3e8ee;
+}
+.box-background--blue {
+    background-color: #5469d4;
+}
+.box-background--white {
+  background-color: #ffffff; 
+}
+.box-background--blue800 {
+    background-color: #212d63;
+}
+.box-background--gray100 {
+    background-color: #e3e8ee;
+}
+.box-background--cyan200 {
+    background-color: #7fd3ed;
+}
+.padding-top--64 {
+  padding-top: 64px;
+}
+.padding-top--24 {
+}
+.padding-top--48 {
+  padding-top: 48px;
+}
+.padding-bottom--24 {
+  padding-bottom: 24px;
+}
+.padding-horizontal--48 {
+  padding: 0px;
+}
+.padding-bottom--15 {
+  padding-bottom: 15px;
+}
+
+.bar-space{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center; gap: 20px;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 22px;
+}
+
+.barLeft-space{
+    width: 45%;
+    height: 3px;
+    background-color:  #455f8d;
+    border-radius: 5px;
+}
+
+.barRight-space{
+    width: 45%;
+    height: 3px;
+    background-color:  #455f8d;
+    border-radius: 5px;
+}
+
+.font-ou{
+    margin-bottom: 7px;
+    color:  #455f8d;
+}
+
+.flex-justifyContent--center {
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.formbg {
+    margin: 0px auto;
+    margin-top: 200px;
+    width: 100%;
+    max-width: 448px;
+    border-radius: 4px;
+}
+.container-padding-bottom--15{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span {
+    display: block;
+    font-size: 30px;
+    line-height: 28px;
+    color: white;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+}
+label {
+    margin-bottom: 10px;
+}
+
+.reset-pass {
+    text-align: right;
+    margin-bottom: 10px;
+    color: rgb(104, 104, 104);
+    font-size: 18px;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+}
+.grid--50-50 {
+    display: flex;
+    position: absolute;
+    margin-left: 340px;
+    margin-top: 9px;
+}
+
+.esqueceu-link:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.field input {
+    font-size: 16px;
+    color: white;
+    line-height: 28px;
+    padding: 8px 16px;
+    width: 100%;
+    height: 50px;
+    border: 3px solid #455f8d;
+    border-radius: 13px;
+    background-color: #1a2c4c;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.field input::placeholder{
+    color: white;
+}
+
+.field input:focus{
+    border-color: rgb(2, 173, 246);
+    outline: none;
+    background-color: #1a2c4c;
+}
+
+.field input:-webkit-autofill{
+    background-color: #1a2c4c !important; 
+}
+
+input[type="submit"] {
+    background-color: rgb(2, 173, 246); 
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 13px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom:  rgb(2, 101, 143) solid 5px;
+}
+.field-checkbox input {
+    width: 20px;
+    height: 15px;
+    margin-right: 5px; 
+    min-height: unset;
+}
+.field-checkbox label {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+a.ssolink {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+}
+.footer-link span {
+    font-size: 14px;
+    text-align: center;
+}
+.listing a {
+    color: #697386;
+    font-weight: 600;
+    margin: 0 10px;
+}
+ 
+
+
+/* second-section */
+
+.second-section{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+
+.right-second-section{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-second-section{
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    color: #ffa5be;
+    font-size: 50px;
+}
+
+.font-text-second{
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+
+.gif-second-section{
+    width: 450px;
+}
+
+.left-second-section{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+    flex-direction: column;
+    font-size: 30px;
+    gap: 10px;
+}
+
+/* third-section */
+
+.third-section{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.left-third-section{
+  
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-third-section{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+    flex-direction: column;
+    font-size: 50px;
+    gap: 10px;
+    color: #ffa5be;
+}
+
+.font-third{
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}

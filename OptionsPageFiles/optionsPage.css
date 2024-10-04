@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+
+.logo {
+    width: 80%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.font-logo{
+    font-size: 50px;
+    color: #ffa5be;
+    margin-left: 20px;
+    font-family: "Modak", system-ui;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.container-options-left-bar {
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option-left-bar {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    justify-content: flex-start;
+    border: 2px solid transparent; /* Borda invisível por padrão */
+    transition: border-color 0.3s ease; /* Transição suave para a borda */
+    border-radius: 10px;
+}
+
+.icon-otion-left-bar{
+    width: 25px;
+    margin-left: 10px;
+}
+
+.font-option-left-bar{
+    margin-left: 10px;
+    font-size: 20px;
+    color: white;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.option-left-bar:hover{
+    background-color:  #3c4453;
+    border-radius: 10px;
+}
+
+/* Estilo da opção ativa (selecionada) */
+.option-left-bar.active {
+    border: 2px solid  #222832; /* Cor da borda quando a opção é selecionada */
+    border-bottom: 5px solid #222832;
+    background-color:  #3c4453;
+}
+
+
+
+
+
+
+

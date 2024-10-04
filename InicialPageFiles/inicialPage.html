@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vices</title>
+    <link rel="stylesheet" href="/InicialPageFiles/inicialPage.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/FavIcon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/FavIcon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/FavIcon/favicon-16x16.png">
+    <link rel="manifest" href="/FavIcon/site.webmanifest">
+    <link rel="mask-icon" href="/FavIcon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <p class="font-logo">vinces</p>
+            <img class="logo-topbar" src="/FavIcon/logo-top-bar.png" alt="">
+        </div>
+        <div class="container-bt-comece-agora">
+            <div class="bt-comece-agora">
+                <p class="font-bt-comece-agora">comece agora</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="first-section">
+            <div class="left-first-section">
+                <video class="gif-first-section" autoplay muted playsinline>
+                    <source  src="/assets/inicialPage/avatar.mp4/apresentação.MP4" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video>
+                <div class="container-cell">
+                    <img class="img-container-cell" src="/assets/inicialPage/phone.png" alt="">
+                    <div class="conteudo-cell">
+                        <div class="chat-container">
+                            <div class="chat-box">      
+                            <!-- Mensagens de apresentação -->
+                                  <div class="message received">Olá! Seja bem-vindo, eu sou a Alicia.</div>
+                                  <div class="message sent">Oi! Obrigado! Como posso começar?</div>
+                                  <div class="message received"> Vou te guiar pelo processo.</div>
+                                  <div class="message sent">Isso parece ótimo! Qual o próximo passo?</div>
+                                  <div class="message received">click e  "Começar agora" se for novo por aqui, ou em "Já tenho conta" e vamos nos divertir.</div>
+                                  <!-- Botão de Next -->
+                                  <button class="next-button-phone">Next</button>
+                            </div>
+                            <div class="blind-chat"></div>
+                        </div>                          
+                    </div>
+                </div>
+            </div>
+            <div class="right-first-section">
+                <div class="text-firt-section">
+                    <p>
+                        O jeito grátis, divertido e eficaz de <br> largar seu vício!
+                    </p>
+                </div>
+                <div class="bt-comece-agora-first-section">
+                    <p>comece agora</p>
+                </div>
+                <!-- Estrutura da modal -->
+                <div id="modal-comece-agora" class="modal-new">
+                    <div class="modal-content-new">
+                        <span class="close-btn-new">&times;</span>
+                        <!-- Barra de progresso -->
+                    <div class="progress-bar-container">
+                        <div id="progress-bar" class="progress-bar"></div>
+                    </div>
+
+                    <!-- Questionário -->
+                    <div id="quiz-container">
+                        <div class="quiz-step active" data-step="1">
+                            <div class="container-perguntas">
+                                <div class="containeiner-gif-perguntas">
+                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                </div>
+                                <div class="container-font-perguntas">
+                                    <div class="balloon-container">
+                                        <h2 class="font-perguntas">Com que frequência você sente a necessidade de usar substância/atividade para se sentir melhor ou aliviar o estresse?</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-alternativas">
+                                <form>
+                                    <label><input type="radio" name="question1" value="Opção 1">Nunca</label><br>
+                                    <label><input type="radio" name="question1" value="Opção 2">Raramente</label><br>
+                                    <label><input type="radio" name="question1" value="Opção 3">Algumas vezes por semana</label><br>
+                                    <label><input type="radio" name="question1" value="Opção 4">Diariamente</label><br>
+                                </form>
+                            </div>
+                            <div class="container-btn">
+                                <button class="next-btn">Próxima</button>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="quiz-step" data-step="2">
+                            <div class="container-perguntas">
+                                <div class="containeiner-gif-perguntas">
+                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                </div>
+                                <div class="container-font-perguntas">
+                                    <div class="balloon-container">
+                                        <h2 class="font-perguntas">Com que frequência você sente a necessidade de usar substância/atividade para se sentir melhor ou aliviar o estresse?</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-alternativas">
+                                <form>
+                                    <label><input type="radio" name="question2" value="Opção 1">Nunca</label><br>
+                                    <label><input type="radio" name="question2" value="Opção 2">Raramente</label><br>
+                                    <label><input type="radio" name="question2" value="Opção 3">Algumas vezes por semana</label><br>
+                                    <label><input type="radio" name="question2" value="Opção 4">Diariamente</label><br>
+                                </form>
+                            </div>
+                            <div class="container-btn">
+                                <button class="prev-btn">Anterior</button>
+                                <button class="next-btn">Próxima</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" data-step="3">
+                            <div class="container-perguntas">
+                                <div class="containeiner-gif-perguntas">
+                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                </div>
+                                <div class="container-font-perguntas">
+                                    <div class="balloon-container">
+                                        <h2 class="font-perguntas">Com que frequência você sente a necessidade de usar substância/atividade para se sentir melhor ou aliviar o estresse?</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-alternativas">
+                                <form>
+                                    <label><input type="radio" name="question3" value="Opção 1">Nunca</label><br>
+                                    <label><input type="radio" name="question3" value="Opção 2">Raramente</label><br>
+                                    <label><input type="radio" name="question3" value="Opção 3">Algumas vezes por semana</label><br>
+                                    <label><input type="radio" name="question3" value="Opção 4">Diariamente</label><br>
+                                </form>
+                            </div>
+                            <div class="container-btn">
+                                <button class="prev-btn">Anterior</button>
+                                <button class="next-btn">Próxima</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" data-step="4">
+                            <div class="container-perguntas">
+                                <div class="containeiner-gif-perguntas">
+                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                </div>
+                                <div class="container-font-perguntas">
+                                    <div class="balloon-container">
+                                        <h2 class="font-perguntas">Com que frequência você sente a necessidade de usar substância/atividade para se sentir melhor ou aliviar o estresse?</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-alternativas">
+                                <form>
+                                    <label><input type="radio" name="question4" value="Opção 1">Nunca</label><br>
+                                    <label><input type="radio" name="question4" value="Opção 2">Raramente</label><br>
+                                    <label><input type="radio" name="question4" value="Opção 3">Algumas vezes por semana</label><br>
+                                    <label><input type="radio" name="question4" value="Opção 4">Diariamente</label><br>
+                                </form>
+                            </div>
+                            <div class="container-btn">
+                                <button class="prev-btn">Anterior</button>
+                                <button class="next-btn">Próxima</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" data-step="5">
+                            <div class="container-perguntas">
+                                <div class="containeiner-gif-perguntas">
+                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                </div>
+                                <div class="container-font-perguntas">
+                                    <div class="balloon-container">
+                                        <h2 class="font-perguntas">Com que frequência você sente a necessidade de usar substância/atividade para se sentir melhor ou aliviar o estresse?</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-alternativas">
+                                <form>
+                                    <label><input type="radio" name="question5" value="Opção 1">Nunca</label><br>
+                                    <label><input type="radio" name="question5" value="Opção 2">Raramente</label><br>
+                                    <label><input type="radio" name="question5" value="Opção 3">Algumas vezes por semana</label><br>
+                                    <label><input type="radio" name="question5" value="Opção 4">Diariamente</label><br>
+                                </form>
+                            </div>
+                            <div class="container-btn">
+                                <button class="prev-btn">Anterior</button>
+                                <button class="next-btn">Próxima</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" data-step="6">
+                            <div class="container-perguntas">
+                                <div class="containeiner-gif-perguntas">
+                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                </div>
+                                <div class="container-font-perguntas">
+                                    <div class="balloon-container">
+                                        <h2 class="font-perguntas">Com que frequência você sente a necessidade de usar substância/atividade para se sentir melhor ou aliviar o estresse?</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-alternativas">
+                                <form>
+                                    <label><input type="radio" name="question6" value="Opção 1">Nunca</label><br>
+                                    <label><input type="radio" name="question6" value="Opção 2">Raramente</label><br>
+                                    <label><input type="radio" name="question6" value="Opção 3">Algumas vezes por semana</label><br>
+                                    <label><input type="radio" name="question6" value="Opção 4">Diariamente</label><br>
+                                </form>
+                            </div>
+                            <div class="container-btn">
+                                <button class="prev-btn">Anterior</button>
+                                <button class="next-btn">Próxima</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" data-step="7">
+                            <div class="container-perguntas">
+                                <div class="containeiner-gif-perguntas">
+                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                </div>
+                                <div class="container-font-perguntas">
+                                    <div class="balloon-container">
+                                        <h2 class="font-perguntas">Com que frequência você sente a necessidade de usar substância/atividade para se sentir melhor ou aliviar o estresse?</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-alternativas">
+                                <form>
+                                    <label><input type="radio" name="question7" value="Opção 1">Nunca</label><br>
+                                    <label><input type="radio" name="question7" value="Opção 2">Raramente</label><br>
+                                    <label><input type="radio" name="question7" value="Opção 3">Algumas vezes por semana</label><br>
+                                    <label><input type="radio" name="question7" value="Opção 4">Diariamente</label><br>
+                                </form>
+                            </div>
+                            <div class="container-btn">
+                                <button class="prev-btn">Anterior</button>
+                                <button class="next-btn">Próxima</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" data-step="8">
+                            <div class="container-perguntas">
+                                <div class="containeiner-gif-perguntas">
+                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                </div>
+                                <div class="container-font-perguntas">
+                                    <div class="balloon-container">
+                                        <h2 class="font-perguntas">Com que frequência você sente a necessidade de usar substância/atividade para se sentir melhor ou aliviar o estresse?</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-alternativas">
+                                <form>
+                                    <label><input type="radio" name="question8" value="Opção 1">Nunca</label><br>
+                                    <label><input type="radio" name="question8" value="Opção 2">Raramente</label><br>
+                                    <label><input type="radio" name="question8" value="Opção 3">Algumas vezes por semana</label><br>
+                                    <label><input type="radio" name="question8" value="Opção 4">Diariamente</label><br>
+                                </form>
+                            </div>
+                            <div class="container-btn">
+                                <button class="prev-btn">Anterior</button>
+                                <button class="next-btn">Próxima</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" data-step="9">
+                            <div class="container-perguntas">
+                                <div class="containeiner-gif-perguntas">
+                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                </div>
+                                <div class="container-font-perguntas">
+                                    <div class="balloon-container">
+                                        <h2 class="font-perguntas">Com que frequência você sente a necessidade de usar substância/atividade para se sentir melhor ou aliviar o estresse?</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-alternativas">
+                                <form>
+                                    <label><input type="radio" name="question9" value="Opção 1">Nunca</label><br>
+                                    <label><input type="radio" name="question9" value="Opção 2">Raramente</label><br>
+                                    <label><input type="radio" name="question9" value="Opção 3">Algumas vezes por semana</label><br>
+                                    <label><input type="radio" name="question9" value="Opção 4">Diariamente</label><br>
+                                </form>
+                            </div>
+                            <div class="container-btn">
+                                <button class="prev-btn">Anterior</button>
+                                <button class="next-btn">Próxima</button>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" data-step="10">
+                            <div class="container-perguntas">
+                                <div class="containeiner-gif-perguntas">
+                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                </div>
+                                <div class="container-font-perguntas">
+                                    <div class="balloon-container">
+                                        <h2 class="font-perguntas">Com que frequência você sente a necessidade de usar substância/atividade para se sentir melhor ou aliviar o estresse?</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-alternativas">
+                                <form>
+                                    <label><input type="radio" name="question10" value="Opção 1">Nunca</label><br>
+                                    <label><input type="radio" name="question10" value="Opção 2">Raramente</label><br>
+                                    <label><input type="radio" name="question10" value="Opção 3">Algumas vezes por semana</label><br>
+                                    <label><input type="radio" name="question10" value="Opção 4">Diariamente</label><br>
+                                </form>
+                            </div>
+                            <div class="container-btn">
+                                <button class="prev-btn">Anterior</button>
+                                <button class="submit-btn">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="bt-ja-tenho-conta" id="openLoginModal">
+                    <p>Já tenho conta</p>
+                </div>
+            </div>
+        </section>
+
+        <div id="loginModal" class="modal">
+            <div class="modal-content">
+                <div class="login-without-google">
+
+                    <div class="login-root">
+                        <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+                          <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+                            <div class="container-closeModal">
+                                <span class="close-btn" id="closeModal">&times;</span>
+                                <div class="criar-conta">
+                                    <p>CRIAR CONTA</p>
+                                </div>
+                            </div>
+                            <div class="formbg-outer">
+                              <div class="formbg">
+                                <div class="formbg-inner padding-horizontal--48">
+                                  <div class="container-padding-bottom--15">
+                                    <span class="padding-bottom--15">Entrar</span>
+                                  </div>
+                                  <form id="stripe-login">
+                                    <div class="field padding-bottom--24">
+                                      <input type="email" autocomplete="off" name="email" placeholder="E-mail ou nome de usuário">
+                                    </div>
+                                    <div class="field padding-bottom--24">
+                                        <div class="grid--50-50">
+                                            <div class="reset-pass">
+                                            <p class="esqueceu-link">esqueceu?</p>
+                                            </div>
+                                        </div>
+                                        <input type="password" name="password" placeholder="Senha" placeholder="esqueceu?">
+                                    </div>
+                                    <div class="field padding-bottom--24">
+                                      <input type="submit" name="submit" value="Continue">
+                                    </div>
+                                    <div class="bar-space">
+                                        <div class="barLeft-space"></div>
+                                        <div class="text-ou"><p class="font-ou">ou</p></div>
+                                        <div class="barRight-space"></div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="login-google">
+                                            <button class="google-login-btn" id="loginButton">
+                                                <img class="google-img" src="/assets/inicialPage/google.png" alt="">
+                                                Google
+                                            </button>
+                                        </div>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                              <div class="footer-link padding-top--24">
+                                <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
+                                  <span><a href="#">© Stackfindover</a></span>
+                                  <span><a href="#">Contact</a></span>
+                                  <span><a href="#">Privacy & terms</a></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        
+        <section class="second-section">
+            <div class="left-second-section">
+                <div class="content-text-section">
+                    <div class="text-second-section">
+                        <p>
+                            Grátis. divetido. <br> eficaz.
+                        </p>
+                        <p class="font-text-second">
+                            Aprender com o Duolingo é divertido, e pesquisas comprovam <br>que funciona mesmo! Com lições rápidas e curtinhas, 
+                            você <br> ganha pontos e desbloqueia novos níveis enquanto aprende <br> como se comunicar na vida real.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-gif">
+                <video class="gif-second-section" autoplay loop muted playsinline>
+                    <source  src="/assets/inicialPage/avatar.mp4/superHappy.MP4" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video>
+            </div>
+        </section>
+
+        <section class="third-section">
+            <div class="left-third-section">
+                <div class="container-gif">
+                    <video class="gif-second-section" autoplay loop muted playsinline>
+                        <source  src="/assets/inicialPage/avatar.mp4/gym.MP4" type="video/mp4">
+                        Seu navegador não suporta a tag de vídeo.
+                    </video>
+                </div>
+            </div>
+            <div class="right-third-section">
+                <div class="content-text-third">
+                    <p>baseado na ciência</p>
+                    <p class="font-third">Combinamos metodologias aprovadas pela ciência com um <br>
+                    conteúdo encantador para criar cursos eficazes que ensinam <br>
+                    leitura, escrita, escuta e fala!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="second-section">
+            <div class="left-second-section">
+                <div class="content-text-section">
+                    <div class="text-second-section">
+                        <p>
+                            Grátis. divetido. <br> eficaz.
+                        </p>
+                        <p class="font-text-second">
+                            Aprender com o Duolingo é divertido, e pesquisas comprovam <br>que funciona mesmo! Com lições rápidas e curtinhas, 
+                            você <br> ganha pontos e desbloqueia novos níveis enquanto aprende <br> como se comunicar na vida real.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-gif">
+                <video class="gif-second-section" autoplay loop muted playsinline>
+                    <source  src="/assets/inicialPage/avatar.mp4/study.MP4" type="video/mp4">
+                    Seu navegador não suporta a tag de vídeo.
+                </video>
+            </div>
+        </section>
+
+
+        <section class="third-section">
+            <div class="left-third-section">
+                <div class="container-gif">
+                    <video class="gif-second-section" autoplay loop muted playsinline>
+                        <source  src="/assets/inicialPage/avatar.mp4/work.MP4" type="video/mp4">
+                        Seu navegador não suporta a tag de vídeo.
+                    </video>
+                </div>
+            </div>
+            <div class="right-third-section">
+                <div class="content-text-third">
+                    <p>baseado na ciência</p>
+                    <p class="font-third">Combinamos metodologias aprovadas pela ciência com um <br>
+                    conteúdo encantador para criar cursos eficazes que ensinam <br>
+                    leitura, escrita, escuta e fala!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+    
+<script src="/InicialPageFiles/inicialPage.js"></script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyA8jaKmNivdVd-0J_lDpTJJ8tXL7vUOCPk",
+        authDomain: "vices-application.firebaseapp.com",
+        projectId: "vices-application",
+        storageBucket: "vices-application.appspot.com",
+        messagingSenderId: "223731456449",
+        appId: "1:223731456449:web:770ac9d0a32affe283f740"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    function loginWithGoogle() {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            const user = result.user;
+            console.log("Usuário logado:", user);
+            // Redireciona para index.html após o login
+            window.location.href = '../CentralPageFiles/index.html'; // Verifique o caminho aqui
+        })
+        .catch((error) => {
+            console.error("Erro durante o login:", error);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginButton = document.getElementById("loginButton");
+        if (loginButton) {
+            loginButton.addEventListener("click", loginWithGoogle);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const loginButton = document.getElementById("loginButton");
+    if (loginButton) {
+        loginButton.addEventListener("click", function(event) {
+            event.preventDefault(); // Previne o envio do formulário
+            loginWithGoogle();
+        });
+    }
+});
+
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário com Flatpickr e FullCalendar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="/CentralPageFiles/style.css".css">
+    <link rel="stylesheet" href="/OptionsPageFiles/optionsPage.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/FavIcon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/FavIcon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/FavIcon/favicon-16x16.png">
+    <link rel="manifest" href="/FavIcon/site.webmanifest">
+    <link rel="mask-icon" href="/FavIcon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<section class="section-container-global">
+    <section class="section-bar-left">
+        <div class="logo"><p class="font-logo">Vices</p></div>
+        <div class="container-options-left-bar">
+            <div class="option-left-bar active" data-option="learn" data-target="learn-bar-right">
+                <img class="icon-otion-left-bar" src="/assets/calendar-days.png" alt="">
+                <p class="font-option-left-bar">Calendario</p>
+            </div>
+            <div class="option-left-bar" data-option="ranked" data-target="ranked-bar-right">
+                <img class="icon-otion-left-bar" src="/assets/e-book.png" alt="">
+                <p class="font-option-left-bar">Aprender</p>
+            </div>
+            <div class="option-left-bar" data-option="calendario" data-target="calendar-bar-right">
+                <img class="icon-otion-left-bar" src="/assets/escudo.png" alt="">
+                <p class="font-option-left-bar">Ranked</p>
+            </div>
+            <div class="option-left-bar" data-option="profile" data-target="profile-bar-right">
+                <img class="icon-otion-left-bar" src="/assets/habilidades.png" alt="">
+                <p class="font-option-left-bar">Perfil</p>
+            </div>
+            <div class="option-left-bar" data-option="more" data-target="more-bar-right">
+                <img class="icon-otion-left-bar" src="/assets/search-engine-optimization.png" alt="">
+                <p class="font-option-left-bar">Mais</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="section-center">    
+        <div id="learn" class="content-section-center">
+            <div class="content-mod-section-learn">
+                <div id="calendar"></div>
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Editar intervalo de datas</h3>
+                        <label for="eventTitle">Título do Evento:</label>
+                        <input type="text" id="editDatePicker" placeholder="Escolha um intervalo de datas" />
+                        <button id="updateButton">Atualizar</button>
+                        <button id="deleteButton">Excluir</button> <!-- Botão de exclusão -->
+                    </div>
+                </div>
+            </div> 
+        </div>  
+        <div id="ranked" class="content-section-center">
+            <div class="content-mod-section-ranked">
+                        <!-- Div de boas-vindas, inicialmente escondida -->
+                <div id="welcome-overlay" class="welcome-overlay">
+                    <div class="welcome-message">
+                        <div class="avatar-question">
+                            <button id="exitButton">X</button>
+                            <div class="container-gif-question">
+                                <div class="container-gif">
+                                    <video class="gif-question" autoplay loop muted playsinline>
+                                        <source  src="/assets/avatarSP/zepeto_video (1).MP4" type="video/mp4">
+                                        Seu navegador não suporta a tag de vídeo.
+                                    </video>
+                                </div>
+                                <div class="chat-question">
+                                    <div class="chat"><p>conte um pouco sobre você <br>estou anotando tudo!</p></div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="welcome">
+                            <div id="quiz-container">
+                                <div class="question-container" style="display: block;">
+                                    <p>Qual é a capital da França?</p>
+                                    <div class="options">
+                                        <button class="option">Paris</button>
+                                        <button class="option">Londres</button>
+                                        <button class="option">Berlim</button>
+                                        <button class="option">Madrid</button>
+                                    </div>
+                                </div>
+                            
+                                <div class="question-container" style="display: none;">
+                                    <p>Qual é a maior montanha do mundo?</p>
+                                    <div class="options">
+                                        <button class="option">K2</button>
+                                        <button class="option">Kilimanjaro</button>
+                                        <button class="option">Everest</button>
+                                        <button class="option">Aconcágua</button>
+                                    </div>
+                                </div>
+                            
+                                <div class="question-container" style="display: none;">
+                                    <p>Qual é o maior oceano do mundo?</p>
+                                    <div class="options">
+                                        <button class="option">Atlântico</button>
+                                        <button class="option">Índico</button>
+                                        <button class="option">Ártico</button>
+                                        <button class="option">Pacífico</button>
+                                    </div>
+                                </div>
+                            
+                          
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="container-button-next">
+                            <button id="nextButton">Próxima</button>
+                            <button id="finishButton" style="display: none;">Finalizar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-learn">
+                    <div class="div-left-section-learn">
+                        <div class="number-of-section-01"><p>Seção 3</p></div>
+                        <div class="bar-progress">
+                            <div class="body-bar-progress">
+                                <p class="result-bar-progress">0/10</p>
+                            </div>
+                        </div>
+                        <div class="continue-or-learn-content">
+                            <div class="continue-or-learn">
+                                <p class="font-continue-or-learn">ESTUDAR</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-right-section-learn">
+                        <div class="box-chat-avatar-content">
+                            <div class="box-chat-avatar"></div>
+                        </div>
+                        <div class="avatar-content">
+                            <img class="img-avatar" src="/assets/inicialPage/avatar.mp4/avatar-01.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="section-learn">
+                    <div class="div-left-section-learn">
+                        <div class="number-of-section-01"><p>Seção 1</p></div>
+                        <div class="bar-progress">
+                            <div class="body-bar-progress">
+                                <p class="result-bar-progress">0/10</p>
+                            </div>
+                        </div>
+                        <div class="continue-or-learn-content">
+                            <div class="continue-or-learn">
+                                <p class="font-continue-or-learn">ESTUDAR</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-right-section-learn">
+                        <div class="box-chat-avatar-content">
+                            <div class="box-chat-avatar"></div>
+                        </div>
+                        <div class="avatar-content">
+                            <img class="img-avatar" src="/assets/inicialPage/avatar.mp4/avatar-02.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="section-learn">
+                    <div class="div-left-section-learn">
+                        <div class="number-of-section-01"><p>Seção 1</p></div>
+                        <div class="bar-progress">
+                            <div class="body-bar-progress">
+                                <p class="result-bar-progress">0/10</p>
+                            </div>
+                        </div>
+                        <div class="continue-or-learn-content">
+                            <div class="continue-or-learn">
+                                <p class="font-continue-or-learn">ESTUDAR</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-right-section-learn">
+                        <div class="box-chat-avatar-content">
+                            <div class="box-chat-avatar"></div>
+                        </div>
+                        <div class="avatar-content">
+                            <img class="img-avatar" src="/assets/inicialPage/avatar.mp4/avatar-03.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="section-learn">
+                    <div class="div-left-section-learn">
+                        <div class="number-of-section-01"><p>Seção 4</p></div>
+                        <div class="bar-progress">
+                            <div class="body-bar-progress">
+                                <p class="result-bar-progress">0/10</p>
+                            </div>
+                        </div>
+                        <div class="continue-or-learn-content">
+                            <div class="continue-or-learn">
+                                <p class="font-continue-or-learn">ESTUDAR</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-right-section-learn">
+                        <div class="box-chat-avatar-content">
+                            <div class="box-chat-avatar"></div>
+                        </div>
+                        <div class="avatar-content">
+                            <img class="img-avatar" src="/assets/inicialPage/avatar.mp4/avatar-04.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="Calendar" class="content-section-center"></div>
+        <div id="profile" class="content-section-center"></div>
+        <div id="more" class="content-section-center"></div> 
+    </section>
+
+
+    <section class="sectio-bar-right">
+        <div id="learn-bar-right" class="content-section-bar-right">
+            <div class="bar-score">
+                <div class="container-max-score">
+                    <img class="img-fire-score" src="/assets/fogo.png" alt="">
+                    <p id="maxScore">0</p>
+                </div>
+                <div class="container-last-interval">
+                    <img class="img-fire-score" src="/assets/coin.png" alt="">
+                    <p id="lastInterval">0</p> <!-- Nova sessão para exibir o último intervalo -->
+                </div>
+                <div class="container-profile-bar-score">
+                    <img class="img-fire-score" src="/assets/profile.png" alt="">
+                </div>
+            </div>
+            <div class="container-ranked-loginRegister">
+                <div class="ranked-information">
+                    <div class="firt-row-ranked-information">
+                        <p class="font-first-row">Desbloqueie ligas</p>
+                    </div>
+                    <div class="second-row-ranked-information">
+                        <img class="img-ranked-information" src="/assets/fechadura.png" alt="">
+                        <p class="font-second-row" >Complete mais dez lições para <br> começar a competir.</p>
+                    </div>    
+                </div>
+                <div class="login-register">
+                    <div class="first-row-login-register">
+                        <p class="font-first-row">Crie um perfil para salvar seu progresso!</p>
+                    </div>
+                    <div class="second-row-login-register">
+                        <div class="create-profile">
+                            <div class="font-create-profile">
+                                <p >criar um perfil</p>
+                            </div>
+                            <div class="div-blind"></div>
+                        </div>
+                        <div class="login">
+                            <div id="login" class="font-create-profile">
+                                <p>entrar</p>
+                            </div>
+                            <div id="blind-login" class="div-blind"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ranked-bar-right" class="content-section-bar-right">
+            <div class="bar-score">
+                <div class="container-max-score">
+                    <img class="img-fire-score" src="/assets/fogo.png" alt="">
+                    <p id="maxScore">0</p>
+                </div>
+                <div class="container-last-interval">
+                    <img class="img-fire-score" src="/assets/coin.png" alt="">
+                    <p id="lastInterval">0</p> <!-- Nova sessão para exibir o último intervalo -->
+                </div>
+                <div class="container-profile-bar-score">
+                    <img class="img-fire-score" src="/assets/profile.png" alt="">
+                </div>
+            </div>
+            <div class="container-ranked-loginRegister">
+                <div class="ranked-information">
+                    <div class="firt-row-ranked-information">
+                        <p class="font-first-row">Desbloqueie ligas</p>
+                    </div>
+                    <div class="second-row-ranked-information">
+                        <img class="img-ranked-information" src="/assets/fechadura.png" alt="">
+                        <p class="font-second-row" >Complete mais dez lições para <br> começar a competir.</p>
+                    </div>    
+                </div>
+                <div class="login-register">
+                    <div class="first-row-login-register">
+                        <p class="font-first-row">Crie um perfil para salvar seu progresso!</p>
+                    </div>
+                    <div class="second-row-login-register">
+                        <div class="create-profile">
+                            <div class="font-create-profile">
+                                <p >criar um perfil</p>
+                            </div>
+                            <div class="div-blind"></div>
+                        </div>
+                        <div class="login">
+                            <div id="login" class="font-create-profile">
+                                <p>entrar</p>
+                            </div>
+                            <div id="blind-login" class="div-blind"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="calendar-bar-right" class="content-section-bar-right"></div>
+        <div id="profile-bar-right" class="content-section-bar-right">
+            <button id="clearButton">Limpar Todas as Datas</button>
+            <p id="savedDates"></p>
+            <p>skdwkwkcnwkcwjkc</p>
+        </div>
+        <div id="more-bar-right" class="content-section-bar-right"></div>
+    </section>
+</section>
+
+    
+
+
+
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+    import { getFirestore, doc, setDoc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyA8jaKmNivdVd-0J_lDpTJJ8tXL7vUOCPk",
+        authDomain: "vices-application.firebaseapp.com",
+        projectId: "vices-application",
+        storageBucket: "vices-application.appspot.com",
+        messagingSenderId: "223731456449",
+        appId: "1:223731456449:web:770ac9d0a32affe283f740"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+
+let savedDates = []; // Array para armazenar os intervalos de datas salvas
+let savedEvents = []; // Array para armazenar os eventos salvos
+let calendar; // Variável para armazenar a instância do calendário
+let currentEvent = null; // Variável para armazenar o evento que está sendo editado
+let initialDate = null; // Armazena a data inicial
+let isLoadingSavedEvents = false; // Variável para controlar o carregamento de eventos salvos
+const userId = "yourUserId"; // Substitua pelo ID do usuário
+
+// Função para inicializar o FullCalendar
+function initCalendar() {
+    const calendarEl = document.getElementById('calendar');
+    calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: ''
+        },
+        events: savedEvents, // Carrega eventos salvos do Firestore
+        eventClick: function(info) {
+            currentEvent = info.event; // Armazena o evento atual
+            openEditModal(info.event); // Abre o modal para edição
+        },
+        dateClick: function(info) {
+            if (!isLoadingSavedEvents) { // Verifica se não está carregando eventos
+                initialDate = info.date; // Define a data inicial
+                addInitialEvent(info.date); // Adiciona uma nova data inicial ao clicar
+            }
+        }
+    });
+    calendar.render();
+}
+
+// Função para carregar as datas salvas e eventos do Firestore ao carregar a página
+async function loadSavedData() {
+    const userDoc = doc(db, "users", userId);
+    const docSnap = await getDoc(userDoc);
+
+    if (docSnap.exists()) {
+        const data = docSnap.data();
+        console.log("Dados carregados do Firestore:", data);
+
+        savedDates = data.savedDates || [];
+        savedEvents = data.savedEvents || [];
+
+        // Limpa os eventos atuais do calendário (se necessário)
+        calendar.removeAllEvents(); // Opcional, dependendo da sua lógica
+
+        // Adiciona eventos ao calendário
+        savedEvents.forEach(eventData => {
+            const event = {
+                title: eventData.title,
+                start: eventData.start.toDate(), // Converter Timestamp para Date
+                end: eventData.end.toDate(),     // Converter Timestamp para Date
+                allDay: eventData.allDay
+            };
+            calendar.addEvent(event); // Adiciona o evento ao calendário visualmente
+        });
+
+        updateSavedDatesText();
+        findMaxScore();
+        updateLastInterval();
+    } else {
+        document.getElementById("savedDates").textContent = 'Nenhuma data salva.';
+    }
+}
+
+
+
+// Função para salvar os dados no Firestore
+async function saveDataToFirestore() {
+    const userDoc = doc(db, "users", userId);
+    const dataToSave = {
+        savedDates: savedDates,
+        savedEvents: savedEvents // Certifique-se de que essa variável está corretamente preenchida
+    };
+
+    console.log("Salvando dados no Firestore:", dataToSave);
+
+    try {
+        await setDoc(userDoc, dataToSave, { merge: true });
+        console.log("Dados salvos no Firestore com sucesso!");
+    } catch (e) {
+        console.error("Erro ao salvar no Firestore: ", e);
+    }
+}
+
+
+
+// Função para adicionar um evento ao calendário
+function addEventToCalendar(startDate, endDate, save = true) {
+    const event = {
+        title: `Datas: ${startDate.toLocaleDateString()} a ${endDate.toLocaleDateString()}`,
+        start: startDate,
+        end: new Date(endDate.getTime() + 24 * 60 * 60 * 1000), // Corrige o dia a mais
+        allDay: true
+    };
+    calendar.addEvent(event);
+
+    const differenceInDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1; // Calcula a diferença de dias
+
+    if (save) {
+        savedDates.push(`${differenceInDays}`);
+        savedEvents.push(event);
+        saveDataToFirestore(); // Salva os dados no Firestore
+    }
+
+    updateSavedDatesText(); // Atualiza a exibição das datas salvas
+    findMaxScore(); // Atualiza a pontuação máxima
+    updateLastInterval(); // Atualiza o último intervalo salvo
+}
+
+// Atualiza o texto das datas salvas
+function updateSavedDatesText() {
+    document.getElementById("savedDates").textContent = savedDates.length > 0 
+        ? `Intervalos salvos: ${savedDates.join(', ')}`
+        : 'Nenhuma data salva.';
+}
+
+// Função para encontrar a pontuação máxima
+function findMaxScore() {
+    let maxDays = 0;
+    let maxDateRange = '';
+
+    savedDates.forEach(dateRange => {
+        const days = parseInt(dateRange.split(' ')[0]);
+        if (days > maxDays) {
+            maxDays = days;
+            maxDateRange = dateRange;
+        }
+    });
+
+    document.getElementById("maxScore").textContent = maxDays > 0 
+        ? ` ${maxDateRange}` 
+        : '';
+}
+
+// Função para atualizar o último intervalo salvo
+function updateLastInterval() {
+    document.getElementById("lastInterval").textContent = savedDates.length > 0 
+        ? ` ${savedDates[savedDates.length - 1]}`
+        : '';
+}
+
+// Abre o modal para editar o intervalo de datas
+function openEditModal(event) {
+    const startDate = new Date(event.start);
+    const endDate = new Date(event.end);
+    document.getElementById("editDatePicker").flatpickr({
+        mode: "range",
+        defaultDate: [startDate, endDate], // Preenche o seletor com as datas atuais
+        onClose: function(selectedDates) {
+            if (selectedDates.length === 2) {
+                const newStartDate = selectedDates[0];
+                const newEndDate = selectedDates[1];
+                event.remove(); // Remove o evento anterior
+                addEventToCalendar(newStartDate, newEndDate); // Adiciona o evento atualizado
+                document.getElementById("modal").style.display = "none"; // Fecha o modal
+            }
+        }
+    });
+    document.getElementById("modal").style.display = "flex"; // Exibe o modal
+}
+
+// Função para excluir o evento atual
+async function deleteCurrentEvent() {
+    if (currentEvent) {
+        currentEvent.remove();
+
+        savedEvents = savedEvents.filter(event => {
+            return !(event.start === currentEvent.start.toISOString() && 
+                     event.end === currentEvent.end.toISOString() && 
+                     event.title === currentEvent.title);
+        });
+
+        const days = parseInt(currentEvent.title.split(' ')[1]);
+        savedDates = savedDates.filter(dateRange => !dateRange.includes(days + ''));
+
+        await updateDoc(doc(db, "users", userId), {
+            savedDates: savedDates,
+            savedEvents: savedEvents
+        });
+
+        updateSavedDatesText();
+        findMaxScore();
+        updateLastInterval();
+
+        document.getElementById("modal").style.display = "none";
+    }
+}
+
+// Limpa todas as datas e eventos salvos
+async function clearAllData() {
+    savedDates = [];
+    savedEvents = [];
+    calendar.removeAllEvents();
+
+    await deleteDoc(doc(db, "users", userId)); // Remove os dados do Firestore
+
+    updateSavedDatesText();
+    findMaxScore();
+    updateLastInterval();
+}
+
+// Fecha o modal ao clicar no "X"
+function closeModal() {
+    document.getElementById("modal").style.display = "none"; // Fecha o modal
+}
+
+// Adiciona um novo evento de data inicial ao clicar no calendário
+function addInitialEvent(date) {
+    if (initialDate) {
+        const event = {
+            title: `Data inicial: ${initialDate.toLocaleDateString()}`,
+            start: initialDate,
+            end: new Date(initialDate.getTime() + 24 * 60 * 60 * 1000), // Marca apenas a data inicial
+            allDay: true
+        };
+        calendar.addEvent(event);
+        savedEvents.push(event);
+        saveDataToFirestore(); // Salva os dados no Firestore
+        initialDate = null; // Reseta a data inicial
+    } else {
+        initialDate = date; // Armazena a data inicial
+    }
+}
+
+// Inicializa o calendário e carrega os dados salvos
+document.addEventListener('DOMContentLoaded', function() {
+    initCalendar(); // Inicializa o calendário
+    loadSavedData(); // Carrega os dados salvos
+
+    const clearButton = document.getElementById('clearButton');
+    if (clearButton) {
+        clearButton.addEventListener('click', clearAllData);
+    }
+
+    const closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener('click', closeModal);
+    }
+
+    const deleteButton = document.getElementById('deleteButton');
+    if (deleteButton) {
+        deleteButton.addEventListener('click', deleteCurrentEvent);
+    }
+});
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script type="module" src="script.js"></script>
+<script src="/OptionsPageFiles/optionPage.js"></script>
+
+
+</body>
+</html>
