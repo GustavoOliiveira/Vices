@@ -70,8 +70,8 @@
                             <button id="exitButton">X</button>
                             <div class="container-gif-question">
                                 <div class="container-gif">
-                                    <video class="gif-question" autoplay loop muted playsinline>
-                                        <source  src="/assets/avatarSP/zepeto_video (1).MP4" type="video/mp4">
+                                    <video id="myVideo" class="gif-question" autoplay loop muted playsinline>
+                                        <source  src="/assets/CentralPage/psico-light.MP4" type="video/mp4">
                                         Seu navegador não suporta a tag de vídeo.
                                     </video>
                                 </div>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="welcome">
                             <div id="quiz-container">
-                                <div class="question-container" style="display: block;">
+                                <div class="question-container" style="display:blocks;">
                                     <p>Qual é a capital da França?</p>
                                     <div class="options">
                                         <button class="option">Paris</button>
@@ -220,7 +220,55 @@
         </div>
         <div id="Calendar" class="content-section-center"></div>
         <div id="profile" class="content-section-center"></div>
-        <div id="more" class="content-section-center"></div> 
+        <div id="more" class="content-section-center">
+            <div class="content-mod-more">
+                <div class="content-config">
+                    <div class="preferencias">
+                        <div class="text-preferencias">
+                            <p class="font-preferencias">Preferencias</p>
+                        </div>
+                        <div class="experiencia">
+                            <p class="font-experiencia">experiencia</p>
+                        </div>
+                    </div>
+                    <div class="chaves-seletoras">
+                        <div class="efeitos-sonoros">
+                            <div class="text-efeito-sonoros">
+                                <p class="font-chaves-seletoras">Efeito sonoros</p>
+                            </div>
+                            <div class="container-chave-seletora"></div>
+                        </div>
+                        <div class="inimacoes">
+                            <div class="text-animacoes">
+                                <p class="font-chaves-seletoras">Animações</p>
+                            </div>
+                            <div class="container-chave-seletora"></div>
+                        </div>
+                        <div class="mensagens-motivacionais">
+                            <div class="text-mensagens-motivacionas">
+                                <p class="font-chaves-seletoras">Frases motivacionais</p>
+                            </div>
+                            <div class="container-chave-seletora"></div>
+                        </div>
+                        <div class="text-visual">
+                            <p class="font-experiencia">Visual</p>
+                        </div>
+                    </div>
+                    <div class="escuro-ou-claro">
+                        <div class="text-modo-escuro">
+                            <p class="font-modo-escuro">Modo escuro</p>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropdown-btn">Selecione uma opção</button>
+                            <div class="dropdown-content">
+                                <a href="#" data-theme="light">Claro</a>
+                                <a href="#" data-theme="dark">Escuro</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
     </section>
 
 
@@ -601,7 +649,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
-<script type="module" src="script.js"></script>
+<script src="/CentralPageFiles/CentralPageFiles.js"></script>
 <script src="/OptionsPageFiles/optionPage.js"></script>
 
 

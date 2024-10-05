@@ -49,22 +49,22 @@
 .font-option-left-bar{
     margin-left: 10px;
     font-size: 20px;
-    color: white;
+    color: var(--cor-font-btn-left-bar);
     font-family: "Zen Maru Gothic", serif;
     font-weight: 900;
     font-style: normal;
 }
 
 .option-left-bar:hover{
-    background-color:  #3c4453;
+    background-color: var(--cor-btn-left-bar);
     border-radius: 10px;
 }
 
 /* Estilo da opção ativa (selecionada) */
 .option-left-bar.active {
-    border: 2px solid  #222832; /* Cor da borda quando a opção é selecionada */
-    border-bottom: 5px solid #222832;
-    background-color:  #3c4453;
+    border: 2px solid  var(--cor-borda-active-btn-left-bar); /* Cor da borda quando a opção é selecionada */
+    border-bottom: 5px solid var(--cor-borda-active-btn-left-bar);
+    background-color: var(--cor-bg-active-btn-left-bar);
 }
 
 

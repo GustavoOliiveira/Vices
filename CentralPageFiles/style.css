@@ -14,25 +14,58 @@
                     display: flex;
                 }
 
+/* -------------------------------------------variaveis para os temas--------------------------------------------  */
+:root {
+    /* Tema Claro */
+    --cor-bg-section-left:  #efefef; /* Cor de fundo da seção esquerda */
+    --cor-bg-section-center:  #efefef; /* Cor de fundo da seção central */
+    --cor-bg-section-right:  #efefef; /* Cor de fundo da seção direita */
+    --cor-btn-left-bar: #cdcbcb;
+    --cor-font-btn-left-bar:  #878585;
+    --cor-borda-active-btn-left-bar:  #ba5773;
+    --cor-bg-active-btn-left-bar:  #fae0e8;
+    --cor-borda-section-left: rgb(215, 215, 215);
+    --cor-font-content-confg-one: #030303;
+    --cor-font-content-confg-two:  #727374;
+    --cor-fundo-seletor-thema:  #f1f1f1;
+    --cor-font-seletor-thema: rgb(54, 54, 54);
+    --video-url: url('/assets/CentralPage/psico-light.MP4');
+}
+
+body.theme-dark {
+    /* Tema Escuro */
+    --cor-bg-section-left:  #333c4d; /* Cor de fundo da seção esquerda */
+    --cor-bg-section-center:   #333c4d; /* Cor de fundo da seção central */
+    --cor-bg-section-right:   #333c4d; /* Cor de fundo da seção direita */
+    --cor-btn-left-bar: #de8099;
+    --cor-font-btn-left-bar:  #faf9f9;
+    --cor-borda-active-btn-left-bar:  #ba5773;
+    --cor-bg-active-btn-left-bar: #de8099;
+    --cor-borda-section-left: rgb(146, 141, 146);
+    --cor-font-content-confg-one: #ffffff;
+    --cor-font-content-confg-two: #ffffff;
+    --cor-fundo-seletor-thema:  #333c4d;
+    --cor-font-seletor-thema: rgb(255, 255, 255);
+    --video-url: url('/assets/CentralPage/psico-dark.MP4');
+}
 
 /* -------------------------------------------section bar left--------------------------------------------  */
 
         .section-bar-left {
             width: 20%;
             height: 100%; /* Alterado para 100% para usar toda a altura da seção */
-            background-color: #333c4d;
-            border-right: 2px solid #70777a;
+            background-color: var(--cor-bg-section-left);
+            border-right: 2px solid var(--cor-borda-section-left);
         }
 
 /* -------------------------------------------section center------------------------------------------------  */
         .section-center {
             width: 50%;
             height: 100%; /* Alterado para 100% para usar toda a altura da seção */
-            background-color:   #333c4d;
+            background-color: var(--cor-bg-section-center);
             display: flex;
             position: relative;
             align-items: stretch; /* Certifique-se de que os filhos se estendam verticalmente */
-            justify-content: center;
             flex-direction: column;
         }
 
@@ -224,7 +257,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #131f24; /* Fundo semi-transparente */
+    background-color: var(--cor-bg-section-left); /* Fundo semi-transparente */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -242,7 +275,7 @@
     width: 93%;
     height: 100%;
     flex-direction: column;
-    background-color: #152025;
+    background-color: var(--cor-bg-section-left);
     color: white;
     display: flex;
     justify-content: center;
@@ -277,8 +310,8 @@
 
 .chat {
     position: relative;
-    background: transparent; /* Sem fundo */
-    color: rgb(246, 242, 242); /* Cor do texto */
+    background: white; /* Sem fundo */
+    color: rgb(44, 43, 43); /* Cor do texto */
     border: 2px solid grey; /* Cor e espessura do contorno */
     border-radius: 10px;
     padding: 10px;
@@ -303,6 +336,7 @@
 .avatar-question{
     width: 100%;
     height: 30%;
+    margin-bottom: 100px;
 }
 
 #exitButton{
@@ -348,7 +382,7 @@
     border-radius: 15px;
     border: 2px solid rgb(96, 95, 95);
     border-bottom: 5px solid  rgb(96, 95, 95);
-    color: white;
+    color: rgb(51, 50, 50);
     cursor: pointer;
 }
 
@@ -361,10 +395,9 @@
 /* Estilo do contêiner do quiz */
 #quiz-container {
     width: 100%;
-    height: 100%;
+    height: 30%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     border-radius: 10px;
     padding: 20px;
@@ -435,6 +468,142 @@
     background-color: #595a5c;
 }
 
+/* content mais center */
+.content-mod-more{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: transparent   ;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.content-config{
+    width: 80%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.preferencias{
+    width: 100%;
+    height: 30%;
+    border-bottom: 2px solid var(--cor-borda-section-left);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.font-preferencias{
+    font-size: 35px;
+    color: var(--cor-font-content-confg-one);
+}
+
+
+.font-modo-escuro{
+    font-size: 28px;
+    color: var(--cor-font-content-confg-one); 
+}
+
+.font-chaves-seletoras{
+    font-size: 18px;
+    color: var(--cor-font-content-confg-one);
+}
+
+.font-experiencia{
+    font-size: 25px;
+    color:  var(--cor-font-content-confg-two);
+}
+
+.chaves-seletoras{
+    width: 100%;
+    height: 50%;
+    border-bottom: 2px solid var(--cor-borda-section-left);
+}
+
+.escuro-ou-claro{
+    width: 100%;
+    height: 20%;
+}
+
+/* Estilo das seções */
+.section-bar-left {
+    width: 20%;
+    height: 100%; /* Usa toda a altura da seção */
+    background-color: var(--cor-bg-section-left);
+}
+
+.section-center {
+    width: 50%;
+    height: 100%; /* Usa toda a altura da seção */
+    background-color: var(--cor-bg-section-center);
+    display: flex;
+    position: relative;
+    align-items: stretch; /* Certifique-se de que os filhos se estendam verticalmente */
+    flex-direction: column;
+}
+
+.sectio-bar-right {
+    width: 30%;
+    height: 100%;
+    background-color: var(--cor-bg-section-right);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Estiliza o botão do dropdown */
+.dropdown-btn {
+    border: 3px solid  var(--cor-borda-section-left);
+    border-bottom: 7px solid  var(--cor-borda-section-left);
+    border-radius: 15px;
+    color: var(--cor-font-seletor-thema);
+    background-color: var(--cor-fundo-seletor-thema);
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-family: "Zen Maru Gothic", serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 18px;
+}
+
+/* Oculta as opções inicialmente */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #e4e0e0;
+    border-radius: 15px;
+    z-index: 1;
+    width: 80%;
+}
+
+/* Estiliza cada link (opção) */
+.dropdown-content a {
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-content a:hover{
+    color: rgb(112, 111, 111);
+}
+
+/* Exibe o conteúdo do dropdown quando ativado */
+.dropdown.show .dropdown-content {
+    display: block;
+}
 
 
 
@@ -461,7 +630,7 @@
         .sectio-bar-right {
             width: 30%;
             height: 100%;
-            background-color: #333c4d;
+            background-color: var(--cor-bg-section-right);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -484,10 +653,16 @@
         }
 
                 .bar-score{
-                    width: 100%;
+                    width: 80%;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                    border-radius: 15px;
                     height: 10%;
                     display: flex;
                     gap: 30px;
+                    background-color: #1578ad;
+                    border: 3px solid  #0e567d;
+                    border-bottom: 7px solid  #0e567d;
                 }
 
                 .container-max-score{
@@ -540,7 +715,9 @@
                 .ranked-information{
                     width: 80%;
                     height: 20%;
-                    border: 3px solid #70777a;
+                    border: 3px solid  #518fa8;
+                    border-bottom: 7px solid #518fa8;
+                    background-color: #87ceeb;
                     border-radius: 15px;
                     display: flex;
                     align-items: center;
@@ -585,7 +762,9 @@
                 .login-register{
                     width: 80%;
                     height: 30%;
-                    border: 2px solid #70777a;
+                    border: 3px solid #178d87;
+                    border-bottom: 7px solid #178d87;
+                    background-color: #20b2aa;
                     border-radius: 15px;
                     display: flex;
                     align-items: center;
@@ -628,7 +807,7 @@
                     width: 100%;
                     height: 89%;
                     border-radius: 7px 7px 0px 0px;
-                    background-color: #228fc2;
+                    background-color: #5561ad;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -649,15 +828,15 @@
                     width: 100%;
                     height: 10%;
                     border-radius: 0px 0px 15px 15px;
-                    background-color: #1c798e;
+                    background-color: #374486;
                 }
 
                 #login{
-                    background-color: #2aa738;
+                    background-color: #5561ad;
                 }
 
                 #blind-login{
-                    background-color: #1d7427;
+                    background-color: #374486;
                 }
 
 
@@ -686,7 +865,7 @@
 /* Cabeçalhos */
 h2 {
     text-align: center;
-    color: #2aa738;
+    color: #50617f;
 }
 
 /* Botão de limpar todas as datas */
@@ -760,6 +939,26 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     color: white;
+}
+
+.fc-direction-ltr .fc-button-group>.fc-button:not(:first-child){
+    background-color:  #50617f;
+    border: 2px solid  #50617f;
+}
+
+.fc-direction-ltr .fc-button-group>.fc-button:not(:last-child){
+    background-color:  #50617f;
+    border: 2px solid  #50617f;   
+}
+
+.fc-direction-ltr .fc-toolbar>*>:not(:first-child){
+    background-color:  #50617f;
+    border: 2px solid  #40506b;
+}
+
+.fc-h-event .fc-event-title-container{
+    background-color:  #7182a2;
+    border: none;
 }
 
 #updateButton {
