@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vices</title>
-    <link rel="stylesheet" href="/InicialPageFiles/inicialPage.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/FavIcon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/FavIcon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/FavIcon/favicon-16x16.png">
-    <link rel="manifest" href="/FavIcon/site.webmanifest">
-    <link rel="mask-icon" href="/FavIcon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="{{ url_for('static', filename='inicialPage/inicialPage.css') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='FavIcon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='FavIcon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='FavIcon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='FavIcon/site.webmanifest') }}">
+    <link rel="mask-icon" href=" {{ url_for('static', filename='FavIcon/safari-pinned-tab.svg') }}" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 </head>
@@ -18,7 +18,7 @@
     <header>
         <div class="logo">
             <p class="font-logo">vinces</p>
-            <img class="logo-topbar" src="/FavIcon/logo-top-bar.png" alt="">
+            <img class="logo-topbar" src="{{ url_for('static', filename='FavIcon/logo-top-bar.png') }}" alt="">
         </div>
         <div class="container-bt-comece-agora">
             <div class="bt-comece-agora">
@@ -31,11 +31,11 @@
         <section class="first-section">
             <div class="left-first-section">
                 <video class="gif-first-section" autoplay muted playsinline>
-                    <source  src="/assets/inicialPage/avatar.mp4/apresentação.MP4" type="video/mp4">
+                    <source  src="{{ url_for('static', filename='assets/inicialPage/avatar.mp4/apresentação.MP4') }}" type="video/mp4">
                     Seu navegador não suporta a tag de vídeo.
                 </video>
                 <div class="container-cell">
-                    <img class="img-container-cell" src="/assets/inicialPage/phone.png" alt="">
+                    <img class="img-container-cell" src="{{ url_for('static', filename='assets/inicialPage/phone.png') }}" alt="">
                     <div class="conteudo-cell">
                         <div class="chat-container">
                             <div class="chat-box">      
@@ -76,7 +76,7 @@
                         <div class="quiz-step active" data-step="1">
                             <div class="container-perguntas">
                                 <div class="containeiner-gif-perguntas">
-                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                    <img class="img-learn-brain" src="{{ url_for('static', filename='FavIcon/learn.cerébro.png') }}" alt="">
                                 </div>
                                 <div class="container-font-perguntas">
                                     <div class="balloon-container">
@@ -102,7 +102,7 @@
                         <div class="quiz-step" data-step="2">
                             <div class="container-perguntas">
                                 <div class="containeiner-gif-perguntas">
-                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                    <img class="img-learn-brain" src="{{ url_for('static', filename='FavIcon/learn.cerébro.png') }}" alt="">
                                 </div>
                                 <div class="container-font-perguntas">
                                     <div class="balloon-container">
@@ -127,7 +127,7 @@
                         <div class="quiz-step" data-step="3">
                             <div class="container-perguntas">
                                 <div class="containeiner-gif-perguntas">
-                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                    <img class="img-learn-brain" src="{{ url_for('static', filename='FavIcon/learn.cerébro.png') }}" alt="">
                                 </div>
                                 <div class="container-font-perguntas">
                                     <div class="balloon-container">
@@ -152,7 +152,7 @@
                         <div class="quiz-step" data-step="4">
                             <div class="container-perguntas">
                                 <div class="containeiner-gif-perguntas">
-                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                    <img class="img-learn-brain" src="{{ url_for('static', filename='FavIcon/learn.cerébro.png') }}" alt="">
                                 </div>
                                 <div class="container-font-perguntas">
                                     <div class="balloon-container">
@@ -177,7 +177,7 @@
                         <div class="quiz-step" data-step="5">
                             <div class="container-perguntas">
                                 <div class="containeiner-gif-perguntas">
-                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                    <img class="img-learn-brain" src="{{ url_for('static', filename='FavIcon/learn.cerébro.png') }}" alt="">
                                 </div>
                                 <div class="container-font-perguntas">
                                     <div class="balloon-container">
@@ -202,7 +202,7 @@
                         <div class="quiz-step" data-step="6">
                             <div class="container-perguntas">
                                 <div class="containeiner-gif-perguntas">
-                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                    <img class="img-learn-brain" src="{{ url_for('static', filename='FavIcon/learn.cerébro.png') }}" alt="">
                                 </div>
                                 <div class="container-font-perguntas">
                                     <div class="balloon-container">
@@ -227,7 +227,7 @@
                         <div class="quiz-step" data-step="7">
                             <div class="container-perguntas">
                                 <div class="containeiner-gif-perguntas">
-                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                    <img class="img-learn-brain" src="{{ url_for('static', filename='FavIcon/learn.cerébro.png') }}" alt="">
                                 </div>
                                 <div class="container-font-perguntas">
                                     <div class="balloon-container">
@@ -252,7 +252,7 @@
                         <div class="quiz-step" data-step="8">
                             <div class="container-perguntas">
                                 <div class="containeiner-gif-perguntas">
-                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                    <img class="img-learn-brain" src="{{ url_for('static', filename='FavIcon/learn.cerébro.png') }}" alt="">
                                 </div>
                                 <div class="container-font-perguntas">
                                     <div class="balloon-container">
@@ -277,7 +277,7 @@
                         <div class="quiz-step" data-step="9">
                             <div class="container-perguntas">
                                 <div class="containeiner-gif-perguntas">
-                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                    <img class="img-learn-brain" src="{{ url_for('static', filename='FavIcon/learn.cerébro.png') }}" alt="">
                                 </div>
                                 <div class="container-font-perguntas">
                                     <div class="balloon-container">
@@ -302,7 +302,7 @@
                         <div class="quiz-step" data-step="10">
                             <div class="container-perguntas">
                                 <div class="containeiner-gif-perguntas">
-                                    <img class="img-learn-brain" src="/FavIcon/learn.cerébro.png" alt="">
+                                    <img class="img-learn-brain" src="{{ url_for('static', filename='FavIcon/learn.cerébro.png') }}" alt="">
                                 </div>
                                 <div class="container-font-perguntas">
                                     <div class="balloon-container">
@@ -341,9 +341,9 @@
                           <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
                             <div class="container-closeModal">
                                 <span class="close-btn" id="closeModal">&times;</span>
-                                <div class="criar-conta">
+                                <a href="/register" class="criar-conta">
                                     <p>CRIAR CONTA</p>
-                                </div>
+                                </a>
                             </div>
                             <div class="formbg-outer">
                               <div class="formbg">
@@ -374,7 +374,7 @@
                                     <div class="field">
                                         <div class="login-google">
                                             <button class="google-login-btn" id="loginButton">
-                                                <img class="google-img" src="/assets/inicialPage/google.png" alt="">
+                                                <img class="google-img" src="{{ url_for('static', filename='assets/inicialPage/google.png') }}" alt="">
                                                 Google
                                             </button>
                                         </div>
@@ -413,7 +413,7 @@
             </div>
             <div class="container-gif">
                 <video class="gif-second-section" autoplay loop muted playsinline>
-                    <source  src="/assets/inicialPage/avatar.mp4/superHappy.MP4" type="video/mp4">
+                    <source  src="{{ url_for('static', filename='assets/inicialPage/avatar.mp4/superHappy.MP4') }} " type="video/mp4">
                     Seu navegador não suporta a tag de vídeo.
                 </video>
             </div>
@@ -423,7 +423,7 @@
             <div class="left-third-section">
                 <div class="container-gif">
                     <video class="gif-second-section" autoplay loop muted playsinline>
-                        <source  src="/assets/inicialPage/avatar.mp4/gym.MP4" type="video/mp4">
+                        <source  src="{{ url_for('static', filename='assets/inicialPage/avatar.mp4/gym.MP4') }}" type="video/mp4">
                         Seu navegador não suporta a tag de vídeo.
                     </video>
                 </div>
@@ -454,7 +454,7 @@
             </div>
             <div class="container-gif">
                 <video class="gif-second-section" autoplay loop muted playsinline>
-                    <source  src="/assets/inicialPage/avatar.mp4/study.MP4" type="video/mp4">
+                    <source  src="{{ url_for('static', filename='assets/inicialPage/avatar.mp4/study.MP4') }}" type="video/mp4">
                     Seu navegador não suporta a tag de vídeo.
                 </video>
             </div>
@@ -465,7 +465,7 @@
             <div class="left-third-section">
                 <div class="container-gif">
                     <video class="gif-second-section" autoplay loop muted playsinline>
-                        <source  src="/assets/inicialPage/avatar.mp4/work.MP4" type="video/mp4">
+                        <source  src="{{ url_for('static', filename='assets/inicialPage/avatar.mp4/work.MP4') }}" type="video/mp4">
                         Seu navegador não suporta a tag de vídeo.
                     </video>
                 </div>
@@ -485,7 +485,7 @@
 
     </footer>
     
-<script src="/InicialPageFiles/inicialPage.js"></script>
+<script src="{{ url_for('static', filename='inicialPage/inicialPage.js') }}"></script>
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
