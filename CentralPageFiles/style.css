@@ -613,11 +613,353 @@ body.theme-dark {
             background-color: transparent;
         }
 
-/* content profile center  */
+/* content profile - center  chat inativo*/
 
         #profile{
             background-color: transparent;
+            display: flex;
         }
+
+        .container-conteudo-prifile {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        h2 {
+            text-align: center;
+        }
+        
+        input {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        #app{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Container do chat */
+        #chat {
+            display: flex; /* Flex layout para sidebar e área de mensagens */
+            width: 90%;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 95%; /* Altura fixa para a área do chat */
+        }
+        
+        /* Perfil do usuário */
+        .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        
+        #edit-profile-button {
+            background-color: #ff9800;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        
+        /* Sidebar */
+        #sidebar {
+            width: 250px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-right: 1px solid #ccc;
+            overflow-y: auto;
+        }
+        
+        #sidebar h3 {
+            margin-top: 0;
+        }
+        
+        .chat-item {
+            padding: 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .chat-item:hover {
+            background-color: #e0e0e0; /* Efeito ao passar o mouse */
+        }
+        
+        .active-chat {
+            background-color: #d0f0c0; /* Destaque para o chat ativo */
+        }
+        
+        /* Estilo para o conteúdo do chat */
+        #message-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            position: relative;
+            background-color: #fff;
+        }
+        
+        #messages li {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        #messages li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Input de mensagem */
+        #messageInput {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        #sendMessage {
+            margin-top: 10px;
+            width: 50px;
+        }
+
+        .container-sendMessage{
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Opções de chat */
+        .chat-options {
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .create-private-and-group-chat{
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-options button {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #5bc0de;
+        }
+        
+        .chat-options button:hover {
+            background-color: #31b0d5;
+        }
+        
+        #chat-logout {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+        }
+
+/* Container de mensagens */
+#message-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Lista de mensagens */
+ul#messages {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para as mensagens */
+ul#messages li {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    max-width: 60%;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column; /* Empilhar nome e mensagem */
+}
+
+/* Mensagem do usuário logado (à direita) */
+ul#messages .user-message {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+    text-align: right; /* Alinha o texto à direita */
+    margin-left: auto;
+    margin-right: 10px;
+    border-bottom-right-radius: 0; /* Ajusta o raio do canto para parecer uma bolha */
+}
+
+/* Mensagem do outro usuário (à esquerda) */
+ul#messages .other-message {
+    background-color: #ffffff;
+    align-self: flex-start;
+    text-align: left; /* Alinha o texto à esquerda */
+    margin-right: auto;
+    margin-left: 10px;
+    border-bottom-left-radius: 0; /* Ajusta o raio do canto para parecer uma bolha */
+}
+
+/* Nome do remetente (pequeno e estilizado) */
+ul#messages .sender-name {
+    font-size: 12px;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Estilização do campo de envio de mensagem */
+.container-sendMessage {
+    display: flex;
+    padding: 10px;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+}
+
+#messageInput {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+}
+
+#sendMessage {
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: #075E54;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#sendMessage:hover {
+    background-color: #054d44;
+}
+
+/* Estilização da sidebar */
+#sidebar {
+    width: 250px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.chat-item {
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.chat-item:hover {
+    background-color: #e0e0e0;
+}
+
+.active-chat {
+    background-color: #d0f0c0; /* Destaque para o chat ativo */
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+#edit-profile-button {
+    background-color: #ff9800;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+#edit-profile-button:hover {
+    background-color: #e68900;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #chat {
+        flex-direction: column;
+    }
+
+    #sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #message-container {
+        padding: 10px;
+    }
+}
+
+
 
 /* content more center  */
 
