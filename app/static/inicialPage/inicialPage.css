@@ -291,7 +291,7 @@ main{
 /* Estrutura básica da nova modal */
 .modal-new {
     display: none;
-    position: absolute;
+    position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
@@ -427,15 +427,14 @@ button:hover {
 form label {
     display: block;
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 5px;
+    margin: 0px ;
     border: 3px solid #f781a3;  /* Borda padrão */
     border-bottom: 5px solid #f781a3;
     border-radius: 15px;
     cursor: pointer;
     font-size: 16px;
     position: relative;
-    padding-left: 40px;  /* Espaço para o checkbox estilizado */
     transition: border-color 0.3s, background-color 0.3s; /* Transição suave */
 }
 
@@ -863,4 +862,299 @@ a.ssolink {
     font-size: 16px;
     font-weight: 500;
     color: black;
+}
+
+/* ----------------------------------------responsividades----------------------------------- */
+
+@media (max-width: 575.98px) {
+    /* header */
+    .logo{
+        margin-left: 0;
+        font-size: 25px;
+    }
+
+    .logo-topbar {
+        width: 50px;
+    }
+
+    header{
+        justify-content: center;
+    }
+
+    .container-bt-comece-agora {
+        display: none;
+    }
+
+    /* first section */
+
+    .first-section {
+        flex-direction: column;
+    }
+
+    .container-cell {
+        display: none;
+    }
+
+    .gif-first-section {
+        width: 200px;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    .left-first-section {
+        width: 100%;
+        height: 50%;
+        padding-left: 0;
+    }
+
+    .right-first-section {
+        width: 100%;
+        height: 50%;
+        padding-right: 0;
+    }
+
+    .bt-comece-agora-first-section{
+        width: 80%;
+    }
+
+    .bt-ja-tenho-conta{
+        width: 80%;
+    }
+
+    /* second section */
+
+    .second-section{
+        flex-direction: column;
+        height: 800px;
+    }
+
+    .left-second-section{
+        width: 100%;
+        height: 50%;
+    }
+
+    .container-gif{
+        height: 50%;
+    }
+
+    /* third section */
+
+    .third-section{
+        flex-direction: column;
+        height: 800px;
+    }
+
+    .left-third-section{
+        width: 100%;
+        height: 50%;
+    }
+
+    .gif-second-section {
+        width: 300px;
+    }
+
+    .text-second-section {
+        align-items: center;
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .font-text-second {
+        text-align: center;
+    }
+
+    .right-third-section{
+        font-size: 35px;
+        text-align: center;
+    }
+
+    /* btn login */
+
+    .formbg{
+        width: 80%;
+        margin-top: 50px;
+    }
+
+    .google-login-btn{
+        width: 40%;
+    }
+
+    .grid--50-50{
+        margin-left: 200px;
+    }
+
+    /* btn comece agora */
+
+    .balloon-container{
+        max-width: 150px;
+    }
+
+    .font-perguntas{
+        font-size: 10px;
+    }
+
+    .container-font-perguntas{
+       display: flex;
+       align-items: flex-start;
+       justify-content: center; 
+    }
+
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+        /* header */
+        .logo{
+            margin-left: 0;
+            font-size: 25px;
+        }
+    
+        .logo-topbar {
+            width: 50px;
+        }
+    
+        header{
+            justify-content: center;
+        }
+    
+        .container-bt-comece-agora {
+            display: none;
+        }
+    
+        /* first section */
+    
+        .first-section {
+            flex-direction: column;
+        }
+    
+        .container-cell {
+            display: flex;
+        }
+
+        .img-container-cell{
+            width: 450px;
+        }
+
+        .conteudo-cell{
+            width: 166px;
+            height: 277px;
+            margin-top: 2px;
+            margin-left: 10px;
+        }
+    
+        .gif-first-section {
+            margin-left: 230px;
+            width: 250px;
+            margin-top: 70px;
+        }
+    
+        .left-first-section {
+            width: 100%;
+            height: 50%;
+        }
+    
+        .right-first-section {
+            width: 100%;
+            height: 50%;
+            padding-right: 0;
+        }
+    
+        .bt-comece-agora-first-section{
+            width: 80%;
+        }
+    
+        .bt-ja-tenho-conta{
+            width: 80%;
+        }
+    
+        /* second section */
+    
+        .second-section{
+            flex-direction: column;
+            height: 800px;
+        }
+    
+        .left-second-section{
+            width: 100%;
+            height: 50%;
+        }
+    
+        .container-gif{
+            height: 50%;
+        }
+    
+        /* third section */
+    
+        .third-section{
+            flex-direction: column;
+            height: 800px;
+        }
+    
+        .left-third-section{
+            width: 100%;
+            height: 50%;
+        }
+    
+        .gif-second-section {
+            width: 300px;
+        }
+    
+        .text-second-section {
+            align-items: center;
+            font-size: 35px;
+            text-align: center;
+        }
+    
+        .font-text-second {
+            text-align: center;
+        }
+    
+        .right-third-section{
+            font-size: 35px;
+            text-align: center;
+        }
+    
+        /* btn login */
+    
+        .formbg{
+            width: 80%;
+            margin-top: 50px;
+        }
+    
+        .google-login-btn{
+            width: 40%;
+        }
+    
+        .grid--50-50{
+            margin-left: 200px;
+        }
+    
+        /* btn comece agora */
+    
+        .balloon-container{
+            max-width: 150px;
+        }
+    
+        .font-perguntas{
+            font-size: 10px;
+        }
+    
+        .container-font-perguntas{
+           display: flex;
+           align-items: flex-start;
+           justify-content: center; 
+        }
+    
+    }
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Estilos para tablets em modo paisagem e laptops pequenos */
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    /* Estilos para desktops padrão */
+}
+
+@media (min-width: 1200px) {
+    /* Estilos para desktops grandes */
 }

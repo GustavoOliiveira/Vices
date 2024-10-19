@@ -219,7 +219,50 @@
             </div>
         </div>
         <div id="Calendar" class="content-section-center"></div>
-        <div id="profile" class="content-section-center"></div>
+        <div id="profile" class="content-section-center">
+            <div class="container-conteudo-prifile">
+                <div id="app">
+                    <div id="chat-login">
+                        <h2>Login</h2>
+                        <input type="email" id="chat-email" placeholder="Email">
+                        <input type="password" id="chat-password" placeholder="Password">
+                        <button id="chat-login-button">Login</button>
+                        <button id="chat-google-login-button">Login with Google</button>
+                    </div>
+                
+                    <div id="chat" style="display: none;">
+                        <div id="user-profile" class="profile"></div>
+                
+                        <div id="sidebar">
+                            <div class="container-chats-groups">
+                                <div class="create-private-and-group-chat">
+                                    <h3>Chats</h3>
+                                    <div class="chat-options">
+                                        <button id="private-chat-button">P</button>
+                                        <button id="create-group-button">G</button>
+                                    </div>
+                                </div>
+                                <div id="privateChatsList"></div>
+                                <div id="groupChatsList"></div>
+                            </div>
+                            <div class="container-config-chat">  
+                                <div id="chat-logout" style="display: none;">
+                                    <button id="chat-logout-button">Logout</button>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div id="message-container">
+                            <ul id="messages"></ul>
+                            <div class="container-sendMessage">
+                                <input type="text" id="messageInput" placeholder="Type your message here...">
+                                <button id="sendMessage">S</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="more" class="content-section-center">
             <div class="content-mod-more">
                 <div class="content-config">
@@ -380,9 +423,9 @@
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-    import { getFirestore, doc, setDoc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
-
+    import { getFirestore, doc, setDoc, getDoc, updateDoc, deleteDoc , collection, addDoc, onSnapshot, query, orderBy, getDocs, where} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+    import { getAuth, signInWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+    
     const firebaseConfig = {
         apiKey: "AIzaSyA8jaKmNivdVd-0J_lDpTJJ8tXL7vUOCPk",
         authDomain: "vices-application.firebaseapp.com",
@@ -644,6 +687,549 @@ document.addEventListener('DOMContentLoaded', function() {
         deleteButton.addEventListener('click', deleteCurrentEvent);
     }
 });
+
+// code by chat----------------------------------------------------------------------------
+
+// Declara o provider globalmente para que possa ser acessado em toda a aplicação
+const provider = new GoogleAuthProvider();
+
+// Obtenção de elementos do DOM
+const chatEmailInput = document.getElementById('chat-email');
+const chatPasswordInput = document.getElementById('chat-password');
+const chatLoginButton = document.getElementById('chat-login-button');
+const chatGoogleLoginButton = document.getElementById('chat-google-login-button');
+const chatLogoutButton = document.getElementById('chat-logout-button');
+const chatDiv = document.getElementById('chat');
+const chatLoginDiv = document.getElementById('chat-login');
+const chatLogoutDiv = document.getElementById('chat-logout');
+const messageInput = document.getElementById('messageInput');
+const messagesList = document.getElementById('messages');
+const sendMessageButton = document.getElementById('sendMessage');
+const userProfileDiv = document.getElementById('user-profile');
+const privateChatButton = document.getElementById('private-chat-button');
+const createGroupButton = document.getElementById('create-group-button');
+const privateChatsList = document.getElementById('privateChatsList');
+const groupChatsList = document.getElementById('groupChatsList');
+const sidebar = document.getElementById('sidebar');
+const messageContainer = document.getElementById('message-container');
+
+// Dados do usuário
+let currentUserProfile = {
+    displayName: null,
+    profilePicture: null,
+    backgroundColor: '#fff'
+};
+
+// Contexto do chat atual
+let currentChat = {
+    type: 'global', // 'global', 'private', 'group'
+    id: 'global'    // 'global', ou ID do chat
+};
+
+// Adiciona os eventos após o carregamento do DOM
+document.addEventListener('DOMContentLoaded', function () {
+    if (chatLoginButton) chatLoginButton.addEventListener('click', chatLogin);
+    if (chatGoogleLoginButton) chatGoogleLoginButton.addEventListener('click', chatLoginWithGoogle);
+    if (chatLogoutButton) chatLogoutButton.addEventListener('click', chatLogout);
+    if (sendMessageButton) sendMessageButton.addEventListener('click', sendMessage);
+    if (privateChatButton) privateChatButton.addEventListener('click', startPrivateChat);
+    if (createGroupButton) createGroupButton.addEventListener('click', createGroup);
+});
+
+// Exibe a interface do chat
+function showChatUI() {
+    chatLoginDiv.style.display = 'none';
+    chatDiv.style.display = 'flex'; // Alterado para flex para sidebar e área de mensagens
+    chatLogoutDiv.style.display = 'block';
+    loadUserProfile(); // Carrega o perfil do usuário
+    loadChats(); // Carrega todos os chats, incluindo o global
+}
+
+// Oculta a interface do chat
+function hideChatUI() {
+    chatLoginDiv.style.display = 'block';
+    chatDiv.style.display = 'none';
+    chatLogoutDiv.style.display = 'none';
+}
+
+// Carrega o perfil do usuário
+function loadUserProfile() {
+    const user = auth.currentUser;
+    if (user) {
+        currentUserProfile.displayName = user.displayName || user.email;
+        currentUserProfile.profilePicture = user.photoURL || 'default-profile.png';
+        userProfileDiv.innerHTML = `
+            <img src="${currentUserProfile.profilePicture}" alt="Profile Picture" class="profile-pic">
+            <button id="edit-profile-button">Edit</button>
+        `;
+        document.getElementById('edit-profile-button').addEventListener('click', editUserProfile);
+    } else {
+        console.error("No user is currently signed in.");
+    }
+}
+
+// Edita o perfil do usuário (nome, foto de perfil)
+function editUserProfile() {
+    const newDisplayName = prompt("Enter your new display name", currentUserProfile.displayName);
+    const newProfilePicture = prompt("Enter the URL of your new profile picture", currentUserProfile.profilePicture);
+    const newBackgroundColor = prompt("Choose a background color for your chat", currentUserProfile.backgroundColor);
+
+    if (newDisplayName) currentUserProfile.displayName = newDisplayName;
+    if (newProfilePicture) currentUserProfile.profilePicture = newProfilePicture;
+    if (newBackgroundColor) currentUserProfile.backgroundColor = newBackgroundColor;
+
+    chatDiv.style.backgroundColor = newBackgroundColor;
+
+    // Atualiza o perfil do usuário no Firebase
+    const user = auth.currentUser;
+    if (user) {
+        updateUserProfile(user, {
+            displayName: currentUserProfile.displayName,
+            photoURL: currentUserProfile.profilePicture
+        }).then(() => {
+            console.log("Profile updated!");
+            loadUserProfile(); // Recarrega os dados do perfil
+        }).catch(error => {
+            console.error("Error updating profile: ", error);
+        });
+    } else {
+        console.error("No user is currently signed in.");
+    }
+}
+
+// Função para atualizar o perfil do usuário no Firebase
+function updateUserProfile(user, newProfileData) {
+    return updateProfile(user, {
+        displayName: newProfileData.displayName,
+        photoURL: newProfileData.photoURL
+    });
+}
+
+// Login com email e senha
+async function chatLogin() {
+    const email = chatEmailInput.value;
+    const password = chatPasswordInput.value;
+
+    if (!email || !password) {
+        console.error("Email or password is missing.");
+        return;
+    }
+
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // Cria ou atualiza o documento do usuário no Firestore
+        await createUserInFirestore(user);
+
+        console.log("Chat user logged in");
+        showChatUI();
+    } catch (error) {
+        console.error("Chat login error: ", error);
+    }
+}
+
+// Fetch or create the global chat room once
+async function fetchOrCreateGlobalChat() {
+    const globalChatRef = doc(db, 'chats', 'global-chat');
+
+    const globalChatDoc = await getDoc(globalChatRef);
+
+    if (!globalChatDoc.exists()) {
+        // If the global chat does not exist, create it
+        await setDoc(globalChatRef, {
+            name: 'Global Chat',
+            createdAt: new Date(),
+            messages: [] // Optionally, initialize with an empty messages array
+        });
+        console.log("Global chat room created.");
+    } else {
+        console.log("Global chat room exists.");
+    }
+
+    // Now, listen for messages in the global chat
+    listenForGlobalMessages(globalChatRef);
+}
+
+// Fetch or create the global chat when user logs in
+auth.onAuthStateChanged(async (user) => {
+    if (user) {
+        console.log("Chat user logged in: ", user);
+        showChatUI();
+
+        // Fetch or create the global chat
+        await fetchOrCreateGlobalChat();
+
+        // Fetch private and group chats
+        fetchPrivateChats();
+        fetchGroupChats();
+    } else {
+        console.log("No chat user logged in");
+        hideChatUI();
+    }
+});
+
+// Listen for messages in the global chat
+function listenForGlobalMessages(globalChatRef) {
+    const q = query(collection(globalChatRef, 'messages'), orderBy('timestamp'));
+    onSnapshot(q, (snapshot) => {
+        messagesList.innerHTML = ''; // Clear the message list
+        snapshot.forEach((doc) => {
+            const messageData = doc.data();
+            const li = document.createElement('li');
+            li.textContent = `${messageData.senderName}: ${messageData.text}`;
+            messagesList.appendChild(li);
+        });
+        scrollToBottom();
+    });
+}
+
+
+// Cria ou atualiza o usuário no Firestore
+async function createUserInFirestore(user) {
+    const userRef = doc(db, 'users', user.uid); // Referência ao documento do usuário
+
+    // Verifica se o documento já existe
+    const userDoc = await getDoc(userRef);
+    if (!userDoc.exists()) {
+        // Se o documento não existir, cria um novo
+        await setDoc(userRef, {
+            email: user.email,
+            displayName: user.displayName || user.email,
+            // Adicione outros campos necessários
+        });
+        console.log("User document created in Firestore:", user.uid);
+    } else {
+        console.log("User document already exists:", user.uid);
+    }
+}
+
+// Login com Google
+async function chatLoginWithGoogle() {
+    try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+
+        // Cria ou atualiza o documento do usuário no Firestore
+        await createUserInFirestore(user);
+
+        console.log("Chat user logged in with Google");
+        showChatUI();
+    } catch (error) {
+        console.error("Chat Google login error: ", error);
+    }
+}
+
+// Logout do chat
+async function chatLogout() {
+    try {
+        await signOut(auth);
+        console.log("Chat user logged out");
+        hideChatUI();
+    } catch (error) {
+        console.error("Chat logout error: ", error);
+    }
+}
+
+
+
+// Carrega todos os chats (global, privados, grupos)
+async function loadChats() {
+    loadGlobalChat();
+    fetchPrivateChats();
+    fetchGroupChats();
+}
+
+// Carrega o chat global
+function loadGlobalChat() {
+    // Cria um item de chat global na sidebar
+    const chatElement = document.createElement('div');
+    chatElement.classList.add('chat-item');
+    chatElement.textContent = 'Global Chat';
+    chatElement.dataset.type = 'global';
+    chatElement.dataset.id = 'global';
+    chatElement.addEventListener('click', () => {
+        setCurrentChat({ type: 'global', id: 'global' });
+    });
+    // Adiciona no topo da sidebar
+    sidebar.insertBefore(chatElement, sidebar.firstChild);
+    // Define o chat global como chat padrão
+    setCurrentChat({ type: 'global', id: 'global' });
+}
+
+// Listener para novas mensagens baseado no chat atual
+let unsubscribeMessages = null;
+
+// Listener para novas mensagens baseado no chat atual
+function listenForMessages() {
+    if (unsubscribeMessages) {
+        unsubscribeMessages();
+    }
+
+    let messagesQuery;
+    if (currentChat.type === 'global') {
+        messagesQuery = query(collection(db, 'messages'), orderBy('timestamp'));
+    } else if (currentChat.type === 'private') {
+        messagesQuery = query(collection(db, 'privateChats', currentChat.id, 'messages'), orderBy('timestamp'));
+    } else if (currentChat.type === 'group') {
+        messagesQuery = query(collection(db, 'groups', currentChat.id, 'messages'), orderBy('timestamp'));
+    }
+
+    unsubscribeMessages = onSnapshot(messagesQuery, (snapshot) => {
+        messagesList.innerHTML = ''; // Limpa a lista antes de adicionar mensagens
+        snapshot.forEach(doc => {
+            const messageData = doc.data();
+            const li = document.createElement('li');
+
+            // Se a mensagem for do usuário logado, aplica a classe 'user-message', senão 'other-message'
+            const messageClass = (messageData.senderId === auth.currentUser.uid) ? 'user-message' : 'other-message';
+            li.classList.add(messageClass);
+
+            // Adiciona o nome do remetente em uma tag <span> pequena
+            li.innerHTML = `
+                <span class="sender-name">${messageData.senderName}</span><br>
+                ${messageData.text}
+            `;
+
+            messagesList.appendChild(li);
+        });
+        scrollToBottom(); // Rola para baixo após atualizar as mensagens
+    });
+}
+
+
+// Define o chat atual e carrega as mensagens
+function setCurrentChat(chat) {
+    currentChat = chat;
+    highlightActiveChat();
+    listenForMessages();
+    clearMessages();
+}
+
+// Destaca o chat ativo na sidebar
+function highlightActiveChat() {
+    const chatItems = document.querySelectorAll('.chat-item');
+    chatItems.forEach(item => {
+        if (item.dataset.type === currentChat.type && item.dataset.id === currentChat.id) {
+            item.classList.add('active-chat');
+        } else {
+            item.classList.remove('active-chat');
+        }
+    });
+}
+
+// Limpa a lista de mensagens
+function clearMessages() {
+    messagesList.innerHTML = '';
+}
+
+// Envia mensagem para o Firestore baseado no chat atual
+async function sendMessage() {
+    const message = messageInput.value;
+    const user = auth.currentUser;
+
+    if (message.trim() && user) {
+        try {
+            if (currentChat.type === 'global') {
+                await addDoc(collection(db, 'messages'), {
+                    text: message,
+                    senderId: user.uid,
+                    senderName: user.displayName || user.email,
+                    timestamp: new Date()
+                });
+            } else if (currentChat.type === 'private') {
+                await addDoc(collection(db, 'privateChats', currentChat.id, 'messages'), {
+                    text: message,
+                    senderId: user.uid,
+                    senderName: user.displayName || user.email,
+                    timestamp: new Date()
+                });
+            } else if (currentChat.type === 'group') {
+                await addDoc(collection(db, 'groups', currentChat.id, 'messages'), {
+                    text: message,
+                    senderId: user.uid,
+                    senderName: user.displayName || user.email,
+                    timestamp: new Date()
+                });
+            }
+            messageInput.value = ''; // Limpa o campo de entrada
+        } catch (error) {
+            console.error("Error sending message: ", error);
+        }
+    } else {
+        console.error("Message is empty or user is not authenticated.");
+    }
+}
+
+// Inicia um chat privado
+async function startPrivateChat() {
+    const recipientEmail = prompt("Enter the email of the user to chat privately with:");
+    if (!recipientEmail) return;
+
+    const q = query(collection(db, 'users'), where('email', '==', recipientEmail));
+    const userSnapshot = await getDocs(q);
+
+    if (userSnapshot.empty) {
+        alert("User not found.");
+        return;
+    }
+
+    const recipient = userSnapshot.docs[0].data();
+    const recipientId = userSnapshot.docs[0].id; // Certifique-se de que você está pegando o ID corretamente
+
+    if (!recipientId) {
+        console.error("Recipient ID is undefined");
+        return;
+    }
+
+    // Determina o chatId ordenando os IDs para garantir a unicidade
+    const currentUserId = auth.currentUser.uid;
+    const sortedIds = [currentUserId, recipientId].sort();
+    const privateChatId = `${sortedIds[0]}_${sortedIds[1]}`;
+
+    const privateChatRef = doc(db, 'privateChats', privateChatId);
+
+    const privateChatDoc = await getDoc(privateChatRef);
+    if (!privateChatDoc.exists()) {
+        // Cria uma nova sala de chat privada
+        await setDoc(privateChatRef, {
+            userIds: sortedIds,
+            createdAt: new Date()
+        });
+        console.log(`Private chat created with ${recipientEmail}`);
+    } else {
+        console.log(`Private chat already exists with ${recipientEmail}`);
+    }
+
+    // Adiciona o chat privado à sidebar se ainda não existir
+    addPrivateChatToSidebar(privateChatId, recipient.displayName || recipient.email);
+    // Define o chat atual para o chat privado
+    setCurrentChat({ type: 'private', id: privateChatId });
+}
+
+// Busca chats privados do usuário
+async function fetchPrivateChats() {
+    const userId = auth.currentUser.uid;
+    const privateChatsRef = collection(db, 'privateChats');
+    const qPrivate = query(privateChatsRef, where('userIds', 'array-contains', userId));
+
+    try {
+        const snapshot = await getDocs(qPrivate);
+        privateChatsList.innerHTML = '';  // Limpa a lista antes de adicionar os novos chats
+
+        if (snapshot.empty) {
+            privateChatsList.innerHTML = '<p>No private chats found.</p>';
+            return;
+        }
+
+        snapshot.forEach(doc => {
+            const chat = doc.data();
+            const chatId = doc.id;
+            const otherUserId = chat.userIds.find(id => id !== userId);
+            // Busca o nome do outro usuário
+            getUserDisplayName(otherUserId).then(displayName => {
+                addPrivateChatToSidebar(chatId, displayName);
+            });
+        });
+    } catch (error) {
+        console.error("Error fetching private chats: ", error);
+    }
+}
+
+// Adiciona um chat privado à sidebar
+function addPrivateChatToSidebar(chatId, displayName) {
+    // Verifica se o chat já existe na sidebar
+    const existingChat = document.querySelector(`.chat-item[data-type="private"][data-id="${chatId}"]`);
+    if (existingChat) return;
+
+    const chatElement = document.createElement('div');
+    chatElement.classList.add('chat-item');
+    chatElement.textContent = `Private: ${displayName}`;
+    chatElement.dataset.type = 'private';
+    chatElement.dataset.id = chatId;
+    chatElement.addEventListener('click', () => {
+        setCurrentChat({ type: 'private', id: chatId });
+    });
+    privateChatsList.appendChild(chatElement);
+}
+
+// Busca chats em grupo do usuário
+async function fetchGroupChats() {
+    const userId = auth.currentUser.uid;
+    const groupChatsRef = collection(db, 'groups');
+    const qGroup = query(groupChatsRef, where('userIds', 'array-contains', userId));
+
+    try {
+        const snapshot = await getDocs(qGroup);
+        groupChatsList.innerHTML = '';  // Limpa a lista antes de adicionar os novos grupos
+
+        if (snapshot.empty) {
+            groupChatsList.innerHTML = '<p>No group chats found.</p>';
+            return;
+        }
+
+        snapshot.forEach(doc => {
+            const group = doc.data();
+            const groupId = doc.id;
+            const groupName = group.name || `Group ${groupId}`;
+            addGroupChatToSidebar(groupId, groupName);
+        });
+    } catch (error) {
+        console.error("Error fetching group chats: ", error);
+    }
+}
+
+// Adiciona um chat em grupo à sidebar
+function addGroupChatToSidebar(groupId, groupName) {
+    // Verifica se o grupo já existe na sidebar
+    const existingGroup = document.querySelector(`.chat-item[data-type="group"][data-id="${groupId}"]`);
+    if (existingGroup) return;
+
+    const groupElement = document.createElement('div');
+    groupElement.classList.add('chat-item');
+    groupElement.textContent = `Group: ${groupName}`;
+    groupElement.dataset.type = 'group';
+    groupElement.dataset.id = groupId;
+    groupElement.addEventListener('click', () => {
+        setCurrentChat({ type: 'group', id: groupId });
+    });
+    groupChatsList.appendChild(groupElement);
+}
+
+// Obtém o nome de exibição de um usuário pelo ID
+async function getUserDisplayName(userId) {
+    const userRef = doc(db, 'users', userId);
+    const userDoc = await getDoc(userRef);
+    if (userDoc.exists()) {
+        return userDoc.data().displayName || userDoc.data().email;
+    } else {
+        return 'Unknown User';
+    }
+}
+
+// Cria um chat em grupo
+async function createGroup() {
+    const groupName = prompt("Enter a group name:");
+    if (!groupName) return;
+
+    // Cria um novo chat em grupo
+    const groupChatRef = await addDoc(collection(db, 'groups'), {
+        name: groupName,
+        userIds: [auth.currentUser.uid],
+        createdAt: new Date()
+    });
+    console.log(`Group chat created: ${groupName}`);
+
+    // Adiciona o novo grupo à sidebar
+    addGroupChatToSidebar(groupChatRef.id, groupName);
+    // Define o chat atual para o novo grupo
+    setCurrentChat({ type: 'group', id: groupChatRef.id });
+}
+
+// Rola o chat para o fundo
+function scrollToBottom() {
+    messagesList.scrollTop = messagesList.scrollHeight;
+}
 
 </script>
 
