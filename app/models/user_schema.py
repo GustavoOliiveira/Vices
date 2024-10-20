@@ -1,30 +1,35 @@
-from firebase_admin import firestore
 from flask_login import UserMixin
 from datetime import datetime
 from app.extensions.firestore import db
 from app.extensions.login import login_manager
-from google.cloud.firestore_v1.base_query import FieldFilter
 
+from pydantic import BaseModel, Field
+from datetime import datetime
+from typing import Optional
+from flask_login import UserMixin
 
-class User(UserMixin):
-    def __init__(self, username, email, password, provider, id=None, created_at=None):
-        self.id = id
-        self.username = username
-        self.email = email
-        self.password = password
-        self.provider = provider # email or gmail
-        self.created_at = datetime.now()
+class UserSchema(UserMixin, BaseModel):
+    username: str
+    email: str
+    password: str
+    provider: str = Field(..., description="email or gmail")
+    id: Optional[str] = None
+    created_at: datetime = Field(default_factory=datetime.now)
+
+    class Config:
+        arbitrary_types_allowed = True
+        json_encoders = {
+            datetime: lambda dt: dt.isoformat()
+        }
 
     @staticmethod
-    def get(user):
-        user_data = db.collection('users').document(user).get()
+    def get(user_id):
+        user_data = db.collection('users').document(user_id).get()
         if user_data.exists:
             data = user_data.to_dict()
-            user_id = user_data.id
-            return User(id=user_id, username=data['username'], email=data['email'], password=data['password'], provider=data['provider'])
-        print('User not found')
+            return UserSchema(id=user_id, **data)
         return None
 
 @login_manager.user_loader
-def load_user(user):
-    return User.get(user)
+def load_user(user_id):
+    return UserSchema.get(user_id)

@@ -1,13 +1,12 @@
 from flask import render_template, request, redirect, url_for, session, jsonify, abort, flash
-import requests
-import json
 from app.blueprints.auth import auth_bp
 from app.forms.user_forms import RegistrationForm, LoginForm
 from app.extensions.firestore import db
 from app.extensions.encrypt import bcrypt
 from app.extensions.oauth import google
-from app.models.user_schema import User
+from app.models.user_schema import UserSchema
 from google.cloud.firestore_v1.base_query import FieldFilter
+from pydantic import ValidationError
 
 from flask_login import current_user, logout_user, login_required, login_user
 
@@ -25,13 +24,15 @@ def register():
     if request.method=='POST' and form.validate_on_submit():
         pw_hash = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
 
-        params = {"username": form.username.data, "email": form.email.data, "password": pw_hash, "provider": "email"}
-        new_user = User(**params)
-        update_time, doc_ref = db.collection("users").add(new_user.to_dict())
-        
+        user_data = {"username": form.username.data, "email": form.email.data, "password": pw_hash, "provider": "email"}
+        try:
+            new_user = UserSchema(**user_data)
+            db.collection("users").add(new_user.model_dump())
+            flash("Registration successful!")
+            return redirect(url_for('auth_bp.success'))
+        except ValidationError as e:
+            flash(e.json())
         # print(f"Added document with id {doc_ref.id}")
-        return redirect(url_for('auth_bp.success'))
-
     return render_template('registerPageFiles/registerPage.html', form=form)
 
 @auth_bp.route("/login", methods=['GET', 'POST'])
@@ -47,10 +48,15 @@ def login():
         result = list(query)
             
         if result:
-            user_data = result[0] #.to_dict()
-            user = User(id=user_data.id, username=user_data.get('username'), password=user_data.get('password'), email=user_data.get('email'), provider=user_data.get('provider'))
-            login_user(user)
-            return redirect(url_for('auth_bp.index'))
+            data = result[0]
+            user_data = data.to_dict()
+            try:
+                user = UserSchema(id=result[0].id, **user_data)
+                login_user(user)
+                flash("Logged in successfully!")
+                return redirect(url_for('auth_bp.index'))
+            except ValidationError as e:
+                flash(e.json())
         
         flash("invalid login method")
         return render_template('loginPageFiles/loginPage.html', form=form)

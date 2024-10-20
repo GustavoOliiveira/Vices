@@ -14,7 +14,6 @@ class LoginForm(FlaskForm):
         query = db.collection('users').where(filter=FieldFilter('email', '==', email.data)).limit(1).stream()
         #incluir no where provider = email
         if not list(query):
-            print('email invalido')
             raise ValidationError('Credenciais incorretas.')
         
     def validate_password(self, password):
@@ -22,7 +21,6 @@ class LoginForm(FlaskForm):
         results = list(query)
 
         if not results:
-            print('email invalido')
             raise ValidationError('Credenciais incorretas.')
         
         user_data = results[0].to_dict()
