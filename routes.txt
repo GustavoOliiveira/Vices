@@ -1,0 +1,7 @@
+ # tela de login
+
+/auth/login
+
+# tela de registro
+
+/auth/register
