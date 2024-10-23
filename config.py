@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 load_dotenv('.env')
 
 class Config:
+    SECURITY_PASSWORD_SALT = 'xxx'
     SECRET_KEY = os.environ.get('SECRET_KEY')
     OAUTH_CREDENTIALS = {
         'google': {

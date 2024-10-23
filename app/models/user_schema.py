@@ -15,6 +15,8 @@ class UserSchema(UserMixin, BaseModel):
     provider: str = Field(..., description="email or gmail")
     id: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.now)
+    is_confirmed: bool = Field(default=False)  
+    confirmed_at: Optional[datetime] = None
 
     class Config:
         arbitrary_types_allowed = True
@@ -27,7 +29,7 @@ class UserSchema(UserMixin, BaseModel):
         user_data = db.collection('users').document(user_id).get()
         if user_data.exists:
             data = user_data.to_dict()
-            return UserSchema(id=user_id, **data)
+            return UserSchema(**data) #id=user_id
         return None
 
 @login_manager.user_loader
