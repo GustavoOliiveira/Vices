@@ -6,7 +6,7 @@ from app.extensions.encrypt import bcrypt
 from app.extensions.oauth import google
 from app.extensions.serializer import generate_token, confirm_token
 from app.extensions.email_sender import sendgrid_mail
-from ..decorators.auth_decorators import check_is_confirmed, logout_required
+from app.utils.decorators.auth_decorators import check_is_confirmed, logout_required
 from app.models.user_schema import UserSchema
 from google.cloud.firestore_v1.base_query import FieldFilter
 from pydantic import ValidationError
