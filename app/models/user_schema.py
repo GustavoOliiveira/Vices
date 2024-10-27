@@ -11,7 +11,7 @@ from flask_login import UserMixin
 class UserSchema(UserMixin, BaseModel):
     username: str
     email: str
-    password: str
+    password: Optional[str] = None
     provider: str = Field(..., description="email or gmail")
     id: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.now)
