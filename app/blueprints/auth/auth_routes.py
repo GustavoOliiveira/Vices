@@ -31,7 +31,7 @@ def register():
         user_data = {"username": form.username.data, "email": form.email.data, "password": pw_hash, "provider": "email"}
 
         try:
-            handle_new_user(user_data)
+            return handle_new_user(user_data)
         except ValidationError as e:
             flash(e.json())
 
@@ -52,12 +52,12 @@ def login():
             data = result[0]
             user_data = data.to_dict()
             try:
-                handle_existing_user(user_data)
+                return handle_existing_user(user_data)
             except ValidationError as e:
                 flash(e.json())
-        
-        flash("invalid login method")
-        return render_template('loginPageFiles/loginPage.html', form=form)
+        else:
+            flash("invalid login method")
+            return render_template('loginPageFiles/loginPage.html', form=form)
         
     return render_template('loginPageFiles/loginPage.html', form=form)
 
@@ -76,9 +76,8 @@ def authorized():
     try:
         response = google.authorized_response()
         if response is None:
-            return 'Access denied: reason=%s error=%s' % (
-            request.args['error_reason'],
-            request.args['error_description'])
+            return 'Access denied: reason=%s' % (
+                request.args['error'])
         
         session['google_token'] = (response['access_token'], '')
         token = response['access_token']
@@ -98,7 +97,6 @@ def authorized():
 
         me = google.get('userinfo')
         new_user_data = me.data
-
         if result:
             user_data = result[0].to_dict()
             return handle_existing_user(user_data)
@@ -147,8 +145,8 @@ def resend_confirmation():
     return redirect(url_for("auth_bp.inactive"))
 
 @auth_bp.route('/')
-@check_is_confirmed
 @login_required
+@check_is_confirmed
 def index():
     if current_user.is_authenticated:
         return "authorized"

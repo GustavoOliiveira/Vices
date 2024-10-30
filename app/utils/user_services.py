@@ -7,14 +7,13 @@ from app.utils.email_services import send_confirmation_email
 
 def handle_existing_user(user_data):
     user = UserSchema(**user_data)
+    login_user(user)
 
     if user_data['is_confirmed']:
-        login_user(user)
         flash("Logged in successfully!")
-        return redirect(url_for('auth_bp.index'))
+        return redirect(url_for("auth_bp.index"))
     else:
-        send_confirmation_email(user_data)
-        login_user(user)
+        send_confirmation_email(user_data['email'])
         flash("A confirmation email has been sent via email.", "success")
         return redirect(url_for("auth_bp.inactive"))
 
